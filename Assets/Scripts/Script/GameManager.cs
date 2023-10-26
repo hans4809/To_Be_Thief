@@ -11,6 +11,5 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        UIScore.text = "ÇöÀç Ä­ ¼ö : " + Score.ToString();
     }
 }

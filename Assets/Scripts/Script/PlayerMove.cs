@@ -6,6 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     public ObjectManager ObjectManager;
     public GameManager GameManager;
+    public int score;
     Rigidbody2D rigid;
     Animator anim;
 
@@ -25,8 +26,8 @@ public class PlayerMove : MonoBehaviour
             anim.SetBool("isWalking", true);
 
         //Player Score
-        GameManager.Score = (int)transform.position.y / 2;
-
+        //GameManager.Score = (int)transform.position.y / 2;
+        score = (int)transform.position.y / 2;
         //DeletePattern
         StartCoroutine(DeletePattern());
 
@@ -66,7 +67,7 @@ public class PlayerMove : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Obstacle")
-            Debug.Log("ав╬З╫ю╢о╢ы.");
+            Debug.Log("О©╫в╬О©╫О©╫О©╫О©╫о╢О©╫.");
     }
 
 }
