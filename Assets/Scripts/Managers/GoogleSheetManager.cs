@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class GoogleSheetManager : MonoBehaviour
+public class GoogleSheetManager
 {
     /*'
         구글 스프레드 시트 URL로 tsv파일(공란이 탭하고 엔터로 구분됨)을 가져오는 거,
@@ -22,7 +22,6 @@ public class GoogleSheetManager : MonoBehaviour
     public void Init()
     {
         sheetDatas.Add(typeof(Define.Items), GetTSVAddress(ADDRESS, RANGE, SHEET_ID));
-        StartCoroutine(LoadData());
     }
 
     public static string GetTSVAddress(string address, string range, long sheetID = 0)
@@ -33,7 +32,7 @@ public class GoogleSheetManager : MonoBehaviour
         }
         return $"{address}/export?format=tsv&range={range}&gid={sheetID}";
     }
-    IEnumerator LoadData()
+    public IEnumerator LoadData()
     {
         List<Type> sheetTypes = new List<Type>(sheetDatas.Keys);
 

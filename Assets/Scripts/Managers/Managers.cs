@@ -28,6 +28,7 @@ public class Managers : MonoBehaviour
     void Start()
     {
         Init();
+        StartCoroutine(s_instance._sheet.LoadData());
     }
     // Update is called once per frame
     void Update()
@@ -48,6 +49,7 @@ public class Managers : MonoBehaviour
         s_instance._pool.Init();
         s_instance._sound.Init();
         s_instance._sheet.Init();
+        
     }
     public static void Clear()
     {
