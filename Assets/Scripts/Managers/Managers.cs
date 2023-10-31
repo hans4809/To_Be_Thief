@@ -11,6 +11,7 @@ public class Managers : MonoBehaviour
     ResourceManager _resource = new ResourceManager();
     SceneManagerEx _scene = new SceneManagerEx();
     //InputManager _input = new InputManager();
+    GoogleSheetManager _sheet = new GoogleSheetManager();
     SoundManager _sound = new SoundManager();
     PoolManager _pool = new PoolManager();
     GameManagerEx _game = new GameManagerEx();
@@ -20,6 +21,7 @@ public class Managers : MonoBehaviour
     public static SceneManagerEx Scene { get { return Instance._scene; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
     //public static InputManager Input { get { return Instance._input; } }
+    public static GoogleSheetManager Sheet { get { return Instance._sheet; } }
     public static SoundManager Sound { get { return Instance._sound; } }
     public static PoolManager Pool { get { return Instance._pool; } }
 
@@ -45,6 +47,7 @@ public class Managers : MonoBehaviour
 
         s_instance._pool.Init();
         s_instance._sound.Init();
+        s_instance._sheet.Init();
     }
     public static void Clear()
     {
@@ -52,7 +55,6 @@ public class Managers : MonoBehaviour
         Sound.Clear();
         Scene.Clear();
         UI.Clear();
-
         Pool.Clear();
     }
 }

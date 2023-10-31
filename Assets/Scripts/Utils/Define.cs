@@ -4,6 +4,23 @@ using UnityEngine;
 
 public class Define
 {
+    public class Items
+    {
+        public ItemType itemType;
+        public float level_1;
+        public float level_2;
+        public float level_3;
+    }
+    public enum ItemType
+    {
+        Player_speed,
+        Player_HitBox,
+        CCTV_Time,
+        Thorn_Steps,
+        Rock_SpawnTime,
+        Rock_Speed,
+        Rock_HitBox
+    }
     public enum WorldObject
     {
         Unknown,
