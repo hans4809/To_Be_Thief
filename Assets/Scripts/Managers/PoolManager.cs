@@ -55,7 +55,7 @@ public class PoolManager
                 poolable = Create();
             }
             poolable.gameObject.SetActive(true);
-            if (parent == null) //Dont Destroy on load ÇØÁ¦ ¿ëµµ
+            if (parent == null) //Dont Destroy on load ï¿½ï¿½ï¿½ï¿½ ï¿½ëµµ
             {
                 poolable.transform.parent = Managers.Scene.CurrentScene.transform;
             }
