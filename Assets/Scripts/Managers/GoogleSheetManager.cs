@@ -8,8 +8,8 @@ using UnityEngine.Networking;
 public abstract class GoogleSheetManager : MonoBehaviour
 {
     /*
-        ±¸±Û ½ºÇÁ·¹µå ½ÃÆ® URL·Î tsvÆÄÀÏ(°ø¶õÀÌ ÅÇÇÏ°í ¿£ÅÍ·Î ±¸ºÐµÊ)À» °¡Á®¿À´Â °Å,
-        URL = "±¸±Û ½ºÇÁ·¹µå ½ÃÆ® URL Áß /edit ¾Õ±îÁö" + "export?format= ¾î¶² Çü½ÄÀ¸·Î ¹ÞÀ» °ÍÀÎÁö" + "&gid=½ÃÆ® ¹øÈ£(½ºÇÁ·¹µå ½ÃÆ® µÚÂÊ¿¡ ³ª¿È)" + "range=º¹»çÇØ¿Ã ¹üÀ§"
+        ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ® URLï¿½ï¿½ tsvï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ï¿½ï¿½Ðµï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½,
+        URL = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ® URL ï¿½ï¿½ /edit ï¿½Õ±ï¿½ï¿½ï¿½" + "export?format= ï¿½î¶² ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + "&gid=ï¿½ï¿½Æ® ï¿½ï¿½È£(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½)" + "range=ï¿½ï¿½ï¿½ï¿½ï¿½Ø¿ï¿½ ï¿½ï¿½ï¿½ï¿½"
     */
     protected const string ADDRESS = "https://docs.google.com/spreadsheets/d/1WZj4mF3424Ta28-ENZQJycE76xYHYTHQKQ14rxHVgjo";
     protected const string SaveADDRESS = "https://script.google.com/macros/s/AKfycbyzwhIItQkkamKuxFhcMIaEr-uIjx1abNgQF1-qHQLzW4jGQpObv38ziHHw8ZdW4YnYwQ/exec";
@@ -18,8 +18,8 @@ public abstract class GoogleSheetManager : MonoBehaviour
     protected const long SHEET_ID = 55073727;
 
     /*
-        key -> ½ºÇÁ·¹µå½ÃÆ® ÁÖÁ¦
-        value -> ½ºÇÁ·¹µå½ÃÆ® µ¥ÀÌÅÍ (Ã³À½¿£ ¸µÅ©)
+        key -> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+        value -> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©)
     */
     protected Dictionary<Type, string> sheetDatas = new Dictionary<Type, string>();
     public List<Define.Items> items = new List<Define.Items>();
@@ -47,6 +47,14 @@ public abstract class GoogleSheetManager : MonoBehaviour
             UnityWebRequest www = UnityWebRequest.Get(sheetDatas[type]);
             yield return www.SendWebRequest();
 
+            if (www.isDone)
+                Debug.Log(www.downloadHandler.text);
+            else
+            {
+                Debug.Log("Error");
+                yield return null;
+            }
+                
             sheetDatas[type] = www.downloadHandler.text;
             if(type == typeof(Define.Items))
             {
@@ -73,7 +81,7 @@ public abstract class GoogleSheetManager : MonoBehaviour
     }
     protected T GetData<T>(string[] datas, string childType = "")
     {
-        // TÅ¸ÀÔÀ¸·Î ÀÎ½ºÅÏ½º »ý¼º
+        // TÅ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½
         object data;
     
         if (string.IsNullOrEmpty(childType) || Type.GetType(childType) == null)
@@ -84,7 +92,7 @@ public abstract class GoogleSheetManager : MonoBehaviour
         {
             data = Activator.CreateInstance(Type.GetType(childType));
         }
-            // Å¬·¡½º¿¡ ÀÖ´Â º¯¼öµéÀ» ¼ø¼­´ë·Î ÀúÀåÇÑ ¹è¿­
+            // Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
         FieldInfo[] fields = typeof(T).GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
         for (int i = 0; i < datas.Length; i++)
@@ -95,7 +103,7 @@ public abstract class GoogleSheetManager : MonoBehaviour
 
                 if (string.IsNullOrEmpty(datas[i])) continue;
 
-                    // º¯¼ö¿¡ ¸Â´Â ÀÚ·áÇüÀ¸·Î ÆÄ½ÌÇØ¼­ ³Ö´Â´Ù
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â´ï¿½ ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½ï¿½Ø¼ï¿½ ï¿½Ö´Â´ï¿½
                 if (type == typeof(int))
                     fields[i].SetValue(data, int.Parse(datas[i]));
 

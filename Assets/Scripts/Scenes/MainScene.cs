@@ -8,15 +8,13 @@ public class MainScene : BaseScene
     // Start is called before the first frame update
     void Start()
     {
-        Init();
+        //Init();
+        Debug.Log(this.gameObject.name);
     }
     protected override void Init()
     {
         base.Init();
-        if (Original == null)
-        {
-            Original = Managers.UI.ShowSceneUI<UI_Main>();
-        }
+        Managers.UI.ShowSceneUI<UI_Main>();
     }
     // Update is called once per frame
     void Update()
