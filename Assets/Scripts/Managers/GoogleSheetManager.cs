@@ -5,25 +5,32 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class GoogleSheetManager
+public abstract class GoogleSheetManager : MonoBehaviour
 {
-    /*'
+    /*
         구글 스프레드 시트 URL로 tsv파일(공란이 탭하고 엔터로 구분됨)을 가져오는 거,
         URL = "구글 스프레드 시트 URL 중 /edit 앞까지" + "export?format= 어떤 형식으로 받을 것인지" + "&gid=시트 번호(스프레드 시트 뒤쪽에 나옴)" + "range=복사해올 범위"
     */
-    const string ADDRESS = "https://docs.google.com/spreadsheets/d/1WZj4mF3424Ta28-ENZQJycE76xYHYTHQKQ14rxHVgjo";
-    const string RANGE = "A2:D";
-    const long SHEET_ID = 0;
+    protected const string ADDRESS = "https://docs.google.com/spreadsheets/d/1WZj4mF3424Ta28-ENZQJycE76xYHYTHQKQ14rxHVgjo";
+    protected const string SaveADDRESS = "https://script.google.com/macros/s/AKfycbyzwhIItQkkamKuxFhcMIaEr-uIjx1abNgQF1-qHQLzW4jGQpObv38ziHHw8ZdW4YnYwQ/exec";
+    protected const string ItmeRANGE = "A2:D";
+    protected const string ScoreRANGE = "A2";
+    protected const long SHEET_ID = 55073727;
+
     /*
         key -> 스프레드시트 주제
         value -> 스프레드시트 데이터 (처음엔 링크)
     */
-    private Dictionary<Type, string> sheetDatas = new Dictionary<Type, string>();
-    public void Init()
-    {
-        sheetDatas.Add(typeof(Define.Items), GetTSVAddress(ADDRESS, RANGE, SHEET_ID));
-    }
+    protected Dictionary<Type, string> sheetDatas = new Dictionary<Type, string>();
+    public List<Define.Items> items = new List<Define.Items>();
+    public List<Define.Score> MaxScore = new List<Define.Score>();
 
+    public virtual void Init() 
+    {
+        sheetDatas.Add(typeof(Define.Items), GetTSVAddress(ADDRESS, ItmeRANGE));
+        sheetDatas.Add(typeof(Define.Score), GetTSVAddress(ADDRESS, ScoreRANGE, SHEET_ID));
+        StartCoroutine(LoadData());
+    }
     public static string GetTSVAddress(string address, string range, long sheetID = 0)
     {
         if(sheetID == 0)
@@ -35,16 +42,36 @@ public class GoogleSheetManager
     public IEnumerator LoadData()
     {
         List<Type> sheetTypes = new List<Type>(sheetDatas.Keys);
-
         foreach (Type type in sheetTypes)
         {
             UnityWebRequest www = UnityWebRequest.Get(sheetDatas[type]);
             yield return www.SendWebRequest();
 
             sheetDatas[type] = www.downloadHandler.text;
+            if(type == typeof(Define.Items))
+            {
+                items = GetDatas<Define.Items>(sheetDatas[type]);
+            }
+            if(type == typeof(Define.Score))
+            {
+                MaxScore = GetDatas<Define.Score>(sheetDatas[type]);
+            }
         }
     }
-    T GetData<T>(string[] datas, string childType = "")
+    public IEnumerator SaveData(int MaxScore)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("value", MaxScore);
+        using(UnityWebRequest www = UnityWebRequest.Post(SaveADDRESS, form))
+        {
+            yield return www.SendWebRequest();
+            if (www.isDone)
+                Debug.Log(www.downloadHandler.text);
+            else
+                Debug.Log("Error");
+        }
+    }
+    protected T GetData<T>(string[] datas, string childType = "")
     {
         // T타입으로 인스턴스 생성
         object data;
@@ -94,7 +121,15 @@ public class GoogleSheetManager
 
             return (T)data;
     }
-    List<T> GetDatas<T>(string data)
+    protected List<T> DataToList<T>(string element)
+    {
+        List<T> returnList = new List<T>();
+        string[] datas = element.Split('\t');
+        returnList.Add(GetData<T>(datas));
+        return returnList;
+    }
+
+    protected List<T> GetDatas<T>(string data)
     {
         List<T> returnList = new List<T>();
         string[] splitedData = data.Split('\n');
@@ -104,11 +139,10 @@ public class GoogleSheetManager
             string[] datas = element.Split('\t');
             returnList.Add(GetData<T>(datas));
         }
-
         return returnList;
     }
-
-    List<T> GetDatasAsChildren<T>(string data)
+    
+    protected List<T> GetDatasAsChildren<T>(string data)
     {
         List<T> returnList = new List<T>();
         string[] splitedData = data.Split('\n');

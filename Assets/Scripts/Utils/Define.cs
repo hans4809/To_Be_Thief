@@ -11,6 +11,10 @@ public class Define
         public float level_2;
         public float level_3;
     }
+    public class Score
+    {
+        public int MaxScore;
+    }
     public enum ItemType
     {
         Player_speed,
@@ -51,10 +55,9 @@ public class Define
     public enum Scene
     {
         Unknown,
-        StartScene,
-        GameScene1,
-        GameScene2,
-        GameScene3
+        MainScene,
+        DataTest,
+        GameScene
     }
     public enum Sound
     {
