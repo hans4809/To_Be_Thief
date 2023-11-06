@@ -10,11 +10,18 @@ public class PlayerMove : MonoBehaviour
     Rigidbody2D rigid;
     Animator anim;
 
+    public float Playersize_level;  // 크기 변수
     int patternY = 15;
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        Playersize_level = 1.3f;
+        transform.localScale = new Vector3(Playersize_level, Playersize_level, 1f); // 크기 설정
     }
 
     private void Update()
