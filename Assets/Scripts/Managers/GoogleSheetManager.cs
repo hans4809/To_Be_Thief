@@ -51,7 +51,7 @@ public abstract class GoogleSheetManager : MonoBehaviour
                 Debug.Log(www.downloadHandler.text);
             else
             {
-                Debug.Log("Error");
+                Debug.Log(www.error);
                 yield return null;
             }
                 

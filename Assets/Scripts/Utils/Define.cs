@@ -49,7 +49,8 @@ public class Define
     public enum MouseEvent
     {
         Press,
-        Click
+        Click,
+        End
     }
 
     public enum Scene
