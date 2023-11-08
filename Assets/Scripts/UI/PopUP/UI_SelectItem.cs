@@ -8,9 +8,9 @@ public class UI_SelectItem : UI_Popup
     public int firstItemIndex;
     public int secondItemIndex;
     public int thirdItemIndex;
-    public UI_ItemButton firstItemButton;
-    public UI_ItemButton secondItemButton;
-    public UI_ItemButton thirdItemButton;
+    public UI_ItemButton firstItemButton = new UI_ItemButton();
+    public UI_ItemButton secondItemButton = new UI_ItemButton();
+    public UI_ItemButton thirdItemButton = new UI_ItemButton();
 
     public enum GameObjects
     {
@@ -25,27 +25,14 @@ public class UI_SelectItem : UI_Popup
     {
         base.Init();
         Bind<GameObject>(typeof(GameObjects));
-        do
-        {
-            do
-            {
-                firstItemIndex = Random.Range(0, Managers.Data.items.Count);
-            } while (!CheckItemLevel(firstItemIndex));
-            do
-            {
-                secondItemIndex = Random.Range(0, Managers.Data.items.Count);
-            } while (!CheckItemLevel(secondItemIndex));
-            do
-            {
-                thirdItemIndex = Random.Range(0, Managers.Data.items.Count);
-            } while (!CheckItemLevel(thirdItemIndex));
+        do {
+            do { firstItemIndex = Random.Range(0, Managers.Data.items.Count); } while (!CheckItemLevel(firstItemIndex));
+            do { secondItemIndex = Random.Range(0, Managers.Data.items.Count); } while (!CheckItemLevel(secondItemIndex));
+            do { thirdItemIndex = Random.Range(0, Managers.Data.items.Count); } while (!CheckItemLevel(thirdItemIndex));
         } while (firstItemIndex == secondItemIndex || secondItemIndex == thirdItemIndex || thirdItemIndex == firstItemIndex);
-        firstItemButton = ItemButtonInit();
-        firstItemButton.itemIndex = firstItemIndex;
-        secondItemButton = ItemButtonInit();
-        secondItemButton.itemIndex = secondItemIndex;
-        thirdItemButton = ItemButtonInit();
-        thirdItemButton.itemIndex = thirdItemIndex;
+        ItemButtonInit(firstItemButton, firstItemIndex);
+        ItemButtonInit(secondItemButton, secondItemIndex);
+        ItemButtonInit(thirdItemButton, thirdItemIndex);
     }
 
     bool CheckItemLevel(int index)
@@ -54,12 +41,12 @@ public class UI_SelectItem : UI_Popup
         return true;
     }
 
-    UI_ItemButton ItemButtonInit()
+    UI_ItemButton ItemButtonInit(UI_ItemButton uI_ItemButton, int itemButtonIndex)
     {
-        UI_ItemButton uI_ItemButton = new UI_ItemButton();
         uI_ItemButton = Managers.UI.ShowAnyUI<UI_ItemButton>();
         uI_ItemButton.transform.SetParent(Get<GameObject>((int)GameObjects.GridPanel).transform);
         uI_ItemButton.transform.localScale = new Vector3(1, 1, 1);
+        uI_ItemButton.itemIndex = itemButtonIndex; 
         return uI_ItemButton;
     }
     // Update is called once per frame

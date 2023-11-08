@@ -39,6 +39,13 @@ public class Managers : MonoBehaviour
             _data.CurrentLevel.Add(_data.items[i].itemType, 1);
             _data.CurrentStat.Add(_data.items[i].itemType, _data.items[i].level_1);
         }
+        _data.CurrentLevel[Define.ItemType.Player_speed] = 3;
+        //_data.CurrentLevel[Define.ItemType.Player_HitBox] = 3;
+        //_data.CurrentLevel[Define.ItemType.CCTV_Time] = 3;
+        _data.CurrentLevel[Define.ItemType.Thorn_Steps] = 3;
+        _data.CurrentLevel[Define.ItemType.Rock_SpawnTime] = 3;
+        //_data.CurrentLevel[Define.ItemType.Rock_Speed] = 3;
+        //_data.CurrentLevel[Define.ItemType.Rock_HitBox] = 3;
     }
     // Update is called once per frame
     void Update()
