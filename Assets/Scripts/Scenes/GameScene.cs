@@ -12,6 +12,7 @@ public class GameScene : BaseScene
     {
         base.Init();
         Managers.Game.Init();
+        Managers.Game.player = FindObjectOfType<PlayerMove>();
         Managers.UI.ShowSceneUI<UI_GameScene>();
         //TO-DO : Play BGM
     }

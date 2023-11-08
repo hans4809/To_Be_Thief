@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager
 {
     public int score = 0;
     public PlayerMove player;
@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
     //인게임 데이터 초기화 
     public void Init()
     {
-        player = FindObjectOfType<PlayerMove>();
         score = 0;
         for (int i = 0; i < Managers.Data.items.Count; i++)
         {
