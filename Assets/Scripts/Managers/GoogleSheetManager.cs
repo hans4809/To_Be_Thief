@@ -97,7 +97,8 @@ public class GoogleSheetManager
     public IEnumerator SaveData(int MaxScore, int FirstPlay)
     {
         WWWForm form = new WWWForm();
-        form.AddField("value", MaxScore);
+        form.AddField("score", MaxScore);
+        form.AddField("firstPlay", FirstPlay);
         using(UnityWebRequest www = UnityWebRequest.Post(SaveADDRESS, form))
         {
             yield return www.SendWebRequest();

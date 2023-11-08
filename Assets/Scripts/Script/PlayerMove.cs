@@ -50,7 +50,7 @@ public class PlayerMove : MonoBehaviour
 
         //Player Score
         //GameManager.Score = (int)transform.position.y / 2;
-        score = (int)transform.position.y / 2;
+        //score = (int)transform.position.y / 2;
         //DeletePattern
         StartCoroutine(DeletePattern());
 
@@ -60,7 +60,10 @@ public class PlayerMove : MonoBehaviour
     {
         //Player Move
         //if (!Input.GetMouseButton(0))
+        if(Managers.Game.currentState == GameManager.GameState.Playing)
+        {
             transform.position = transform.position + Vector3.up * player_speed * Time.deltaTime;
+        }
     }
     void MousePress(Define.MouseEvent evt)
     {
@@ -103,7 +106,11 @@ public class PlayerMove : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Obstacle")
+        {
             Debug.Log("�׾����ϴ�.");
+            Managers.Game.PlayerDied();
+        }
+
     }
 
 }

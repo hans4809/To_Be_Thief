@@ -14,9 +14,9 @@ public class Managers : MonoBehaviour
     DataManager _data = new DataManager();
     SoundManager _sound = new SoundManager();
     PoolManager _pool = new PoolManager();
-    GameManagerEx _game = new GameManagerEx();
+    GameManager _game = new GameManager();
 
-    public static GameManagerEx Game { get { return Instance._game; } }
+    public static GameManager Game { get { return Instance._game; } }
     public static UI_Manager UI { get { return Instance._ui; } }
     public static SceneManagerEx Scene { get { return Instance._scene; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
@@ -44,6 +44,7 @@ public class Managers : MonoBehaviour
     void Update()
     {
         _input.OnUpdate();
+        _game.OnUpdate();
     }
     static void Init()
     {

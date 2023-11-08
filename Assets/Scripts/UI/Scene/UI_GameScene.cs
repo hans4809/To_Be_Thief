@@ -21,13 +21,12 @@ public class UI_GameScene : UI_Scene
     {
         base.Init();
         Bind<Text>(typeof(Texts));
-        player = gameObject.GetComponent<PlayerMove>();
         ScoreText = Get<Text>((int)Texts.ScoreText).GetComponent<Text>();
-        ScoreText.text = "현재 칸 수 : " + player.score;
+        ScoreText.text = "현재 칸 수 : " + Managers.Game.score;
     }
     // Update is called once per frame
     void Update()
     {
-        ScoreText.text = "현재 칸 수 : " + player.score;
+        ScoreText.text = "현재 칸 수 : " + Managers.Game.score;
     }
 }

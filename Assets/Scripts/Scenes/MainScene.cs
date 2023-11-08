@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MainScene : BaseScene
 {
-    UI_Main Original;
     // Start is called before the first frame update
     protected override void Init()
     {
@@ -18,6 +17,6 @@ public class MainScene : BaseScene
     }
     public override void Clear()
     {
-        throw new System.NotImplementedException();
+        
     }
 }
