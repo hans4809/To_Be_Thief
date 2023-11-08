@@ -7,6 +7,7 @@ public class GameManager
 {
     public int score = 0;
     public PlayerMove player;
+    public int itemSelected = 0;
     //게임 상태를 나눠서 상태에 따라 스크립트들이 돌아가게 함
     public enum GameState
     {
@@ -39,6 +40,7 @@ public class GameManager
         }
         currentState = GameState.Playing;
         Time.timeScale = 1;
+        itemSelected = 0;
     }
     //인게임 동작 중 실행시킬 함수
     public void OnUpdate()
@@ -47,6 +49,15 @@ public class GameManager
         if (currentState == GameState.Playing)
         {
             score = (int)player.transform.position.y / 2;
+            if(score == 10 ||(score % 30 == 0 && score > 10))
+            {
+                if ((score + 1 > itemSelected * 10 && itemSelected != 1) || itemSelected == 0)
+                {
+                    Managers.UI.ShowPopUpUI<UI_SelectItem>();
+                    Time.timeScale = 0;
+                    currentState = GameState.Pause;
+                }
+            }
         }
     }
     // 중간에 아이템 선택창을 띄울수 있는지 없는지 확인하는 함수

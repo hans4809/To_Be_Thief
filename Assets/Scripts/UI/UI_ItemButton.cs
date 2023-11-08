@@ -41,9 +41,12 @@ public class UI_ItemButton : UI_Base
                 Managers.Data.CurrentStat[Managers.Data.items[itemIndex].itemType] = Managers.Data.items[itemIndex].level_3;
                 break;
         }
+        Managers.Game.itemSelected++;
         Debug.Log(Managers.Data.CurrentLevel[Managers.Data.items[itemIndex].itemType]);
         Debug.Log(Managers.Data.CurrentStat[Managers.Data.items[itemIndex].itemType]);
         Managers.UI.CloseAllPopUPUI();
+        Time.timeScale = 1;
+        Managers.Game.currentState = GameManager.GameState.Playing;
     }
     // Update is called once per frame
     void Update()
