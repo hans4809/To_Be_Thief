@@ -11,7 +11,7 @@ public class Managers : MonoBehaviour
     ResourceManager _resource = new ResourceManager();
     SceneManagerEx _scene = new SceneManagerEx();
     InputManager _input = new InputManager();
-    //GoogleSheetManager _sheet = new GoogleSheetManager();
+    DataManager _data = new DataManager();
     SoundManager _sound = new SoundManager();
     PoolManager _pool = new PoolManager();
     GameManagerEx _game = new GameManagerEx();
@@ -21,13 +21,24 @@ public class Managers : MonoBehaviour
     public static SceneManagerEx Scene { get { return Instance._scene; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static InputManager Input { get { return Instance._input; } }
-    //public static GoogleSheetManager Sheet { get { return Instance._sheet; } }
+    public static DataManager Data { get { return Instance._data; } }
     public static SoundManager Sound { get { return Instance._sound; } }
     public static PoolManager Pool { get { return Instance._pool; } }
 
     void Start()
     {
         Init();
+        StartCoroutine(WaitForDataLoaing());
+    }
+    public IEnumerator WaitForDataLoaing()
+    {
+        Coroutine cor1 = StartCoroutine(_data.LoadData());
+        yield return cor1;
+        for (int i = 0; i < _data.items.Count; i++)
+        {
+            _data.CurrentLevel.Add(_data.items[i].itemType, 1);
+            _data.CurrentStat.Add(_data.items[i].itemType, _data.items[i].level_1);
+        }
     }
     // Update is called once per frame
     void Update()
@@ -47,6 +58,7 @@ public class Managers : MonoBehaviour
 
         s_instance._pool.Init();
         s_instance._sound.Init();
+        s_instance._data.Init();
     }
     public static void Clear()
     {

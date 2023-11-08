@@ -5,20 +5,9 @@ using UnityEngine;
 
 public class DataManager : GoogleSheetManager
 {
-    public static DataManager _instance;
-    public GameObject _gameObject;
+    public Dictionary<Define.ItemType, int> CurrentLevel = new Dictionary<Define.ItemType, int>();
+    public Dictionary<Define.ItemType, float> CurrentStat = new Dictionary<Define.ItemType, float>();
 
-    public void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(_gameObject);
-        }
-        else if (_instance != this)
-            Destroy(_instance.gameObject);
-        Init();
-    }   
     public override void Init()
     {
         base.Init();

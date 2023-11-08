@@ -49,7 +49,6 @@ public class UI_Manager
         }
         GameObject go = Managers.Resource.Instantiate($"UI/{name}");
         T anyUI = Util.GetOrAddComponent<T>(go);
-        go.transform.SetParent(Root.transform);
         return anyUI;
     }
     public T ShowPopUpUI<T>(string name = null) where T : UI_Popup

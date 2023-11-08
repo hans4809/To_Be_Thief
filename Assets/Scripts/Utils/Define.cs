@@ -10,10 +10,12 @@ public class Define
         public float level_1;
         public float level_2;
         public float level_3;
+        public string itemExplain;
     }
-    public class Score
+    public class GameData
     {
-        public int MaxScore;
+        public int maxScore;
+        public int firstPlay;
     }
     public enum ItemType
     {

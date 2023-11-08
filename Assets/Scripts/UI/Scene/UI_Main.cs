@@ -35,11 +35,11 @@ public class UI_Main : UI_Scene
     }
     public void DataTest(PointerEventData eventData)
     {
-        if(DataManager._instance.MaxScore[0].MaxScore < 100)
-        {
-            StartCoroutine(DataManager._instance.SaveData(100));
-        }
-        Debug.Log("DataTestClicked");
+        //if(DataManager._instance.MaxScore[0].MaxScore < 100)
+        //{
+        //    StartCoroutine(DataManager._instance.SaveData(100));
+        //}
+        Managers.UI.ShowPopUpUI<UI_SelectItem>();
     }
     // Update is called once per frame
     void Update()

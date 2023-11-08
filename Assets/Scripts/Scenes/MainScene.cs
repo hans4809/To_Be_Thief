@@ -6,11 +6,6 @@ public class MainScene : BaseScene
 {
     UI_Main Original;
     // Start is called before the first frame update
-    void Start()
-    {
-        //Init();
-        Debug.Log(this.gameObject.name);
-    }
     protected override void Init()
     {
         base.Init();
