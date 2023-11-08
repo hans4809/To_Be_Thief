@@ -39,23 +39,10 @@ public class UI_Main : UI_Scene
         //{
         //    StartCoroutine(DataManager._instance.SaveData(100));
         //}
-        if (CanPopUpUI_SelectItem())
+        //if (CanPopUpUI_SelectItem())
             Managers.UI.ShowPopUpUI<UI_SelectItem>();
-        else
-            Debug.Log("Can PopUp UI_SelectItem");
-    }
-    bool CanPopUpUI_SelectItem()
-    {
-        int notLevel3 = 0;
-        foreach (var var in Managers.Data.CurrentLevel)
-        {
-            if (var.Value != 3)
-            {
-                notLevel3++;
-            }
-        }
-        if (notLevel3 >= 3) return true;
-        return false;
+        //else
+            //Debug.Log("Can PopUp UI_SelectItem");
     }
     // Update is called once per frame
     void Update()

@@ -100,7 +100,6 @@ public class UI_Manager
             return;
         }
         ClosePopUpUI();
-
     }
     public void CloseAllPopUPUI()
     {
@@ -108,6 +107,7 @@ public class UI_Manager
         {
             ClosePopUpUI();
         }
+        Time.timeScale = 1;
     }
     public void Clear()
     {
