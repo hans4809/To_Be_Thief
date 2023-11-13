@@ -6,15 +6,15 @@ public class BackGroundManager : MonoBehaviour
 {
     public GameObject[] Prefabs;
 
-    GameObject[] mapCCTV;
-    GameObject[] mapRock;
-    GameObject[] mapSpike;
+    GameObject[] Map_Round_1;
+    GameObject[] Map_Round_2;
+    GameObject[] Map_Round_3;
 
     void Awake()
     {
-        mapCCTV = new GameObject[5];
-        mapRock = new GameObject[5];
-        mapSpike = new GameObject[5];
+        Map_Round_1 = new GameObject[5];
+        Map_Round_2 = new GameObject[5];
+        Map_Round_3 = new GameObject[5];
 
         Generate();
     }
@@ -23,12 +23,12 @@ public class BackGroundManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            mapCCTV[i] = Instantiate(Prefabs[0], transform);
-            mapCCTV[i].SetActive(false);
-            mapRock[i] = Instantiate(Prefabs[1], transform);
-            mapRock[i].SetActive(false);
-            mapSpike[i] = Instantiate(Prefabs[2], transform);
-            mapSpike[i].SetActive(false);
+            Map_Round_1[i] = Instantiate(Prefabs[0], transform);
+            Map_Round_1[i].SetActive(false);
+            Map_Round_2[i] = Instantiate(Prefabs[1], transform);
+            Map_Round_2[i].SetActive(false);
+            Map_Round_3[i] = Instantiate(Prefabs[2], transform);
+            Map_Round_3[i].SetActive(false);
         }
     }
 
@@ -39,11 +39,10 @@ public class BackGroundManager : MonoBehaviour
         {
             for (int i = 0; i < 5; i++)
             {
-                if (!mapCCTV[i].activeSelf)
+                if (!Map_Round_1[i].activeSelf)
                 {
-                    mapCCTV[i].SetActive(true);
-                    Debug.Log("맵1 실행확인");
-                    return mapCCTV[i];
+                    Map_Round_1[i].SetActive(true);
+                    return Map_Round_1[i];
                 }
             }
         }
@@ -52,11 +51,10 @@ public class BackGroundManager : MonoBehaviour
         {
             for (int i = 0; i < 5; i++)
             {
-                if (!mapRock[i].activeSelf)
+                if (!Map_Round_2[i].activeSelf)
                 {
-                    mapRock[i].SetActive(true);
-                    Debug.Log("맵2 실행확인");
-                    return mapRock[i];
+                    Map_Round_2[i].SetActive(true);
+                    return Map_Round_2[i];
                 }
             }
         }
@@ -65,16 +63,14 @@ public class BackGroundManager : MonoBehaviour
         {
             for (int i = 0; i < 5; i++)
             {
-                if (!mapSpike[i].activeSelf)
+                if (!Map_Round_3[i].activeSelf)
                 {
-                    mapSpike[i].SetActive(true);
-                    Debug.Log("맵3 실행확인");
-                    return mapSpike[i];
+                    Map_Round_3[i].SetActive(true);
+                    return Map_Round_3[i];
                 }
             }
         }
 
-        Debug.Log("맵 생성실패 확인");
         return null;
     }
 }

@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
     public BackGroundManager BackGroundManager;
     public GameManager GameManager;
     public int score;
+    public int MapCode = 0; // 무슨 맵을 생성하느냐에 대한 변수 
     Rigidbody2D rigid;
     Animator anim;
 
@@ -89,11 +90,7 @@ public class PlayerMove : MonoBehaviour
             GameObject newPattern = ObjectManager.MakeObj(Random.Range(0, 3));
             newPattern.transform.position = new Vector3(0, patternY, 0);
 
-            patternY += 6;
-
-            Debug.Log("진입확인 ");
-
-            GameObject newBackGround = BackGroundManager.MakeMap(Random.Range(0, 3));
+            GameObject newBackGround = BackGroundManager.MakeMap(MapCode);  //맵 코드를 받아서 맵 생성 
             newBackGround.transform.position = new Vector3(0, patternY, 0);
 
             patternY += 6;

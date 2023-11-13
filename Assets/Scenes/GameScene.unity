@@ -597,9 +597,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefabs:
-  - {fileID: 8183975850704900061, guid: 1df6e0cf8b937fc4783c02a5efd40778, type: 3}
-  - {fileID: 7326054578781364051, guid: 1ea261ed6537630429f5c42eca04805c, type: 3}
-  - {fileID: 6368341033236114856, guid: 6e1a2397c1fa6d6479f59a59d754bf6f, type: 3}
+  - {fileID: 33635041357074689, guid: 7d36d56c63b340447b3477edc1daa7ae, type: 3}
+  - {fileID: 5495571091090287988, guid: abbf33c13b96a1442a93e80da211185e, type: 3}
+  - {fileID: 5589793581567722019, guid: 098a856fe4f884648b5b160e0d7f2966, type: 3}
 --- !u!4 &1018828613
 Transform:
   m_ObjectHideFlags: 0
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectManager: {fileID: 278451927}
-  BackGroundManager: {fileID: 0}
+  BackGroundManager: {fileID: 1018828612}
   score: 0
   Playersize_level: 0
   player_speed: 0
