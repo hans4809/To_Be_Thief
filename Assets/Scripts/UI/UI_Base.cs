@@ -48,6 +48,7 @@ public abstract class UI_Base : MonoBehaviour
     protected Text GetText(int index) { return Get<Text>(index); }
     protected Button GetButton(int index) { return Get<Button>(index); }
     protected Image GetImage(int index) { return Get<Image>(index); }
+    protected Slider GetSlider(int index) { return Get<Slider>(index); }
 
     public static void AddUIEvent(GameObject go, Action<PointerEventData> action, Define.UIEvent type = Define.UIEvent.Click)
     {

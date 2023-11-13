@@ -14,10 +14,10 @@ public class SoundManager
 
     public void Init()
     {
-        audioMixer = Resources.Load<AudioMixer>("AudioMixer/SoundSetting");
         GameObject root = GameObject.Find("@Sound");
         if (root == null)
         {
+            audioMixer = Resources.Load<AudioMixer>("Sounds/SoundSetting");
             root = new GameObject { name = "@Sound" };
             Object.DontDestroyOnLoad(root);
 
@@ -26,7 +26,7 @@ public class SoundManager
             {
                 GameObject go = new GameObject { name = soundNames[i] };
                 _audioSources[i] = go.AddComponent<AudioSource>();
-                //_audioSources[i].outputAudioMixerGroup = audioMixer.FindMatchingGroups($"{soundNames[i]}")[0];
+                _audioSources[i].outputAudioMixerGroup = audioMixer.FindMatchingGroups($"{soundNames[i]}")[0];
                 go.transform.parent = root.transform;
             }
         }
@@ -58,7 +58,7 @@ public class SoundManager
     }
     public void PlayDelayed(AudioClip audioClip, float delay, Define.Sound type = Define.Sound.BGM, float pitch = 1.0f)
     {
-        audioMixer = Managers.Resource.Load<AudioMixer>("AudioMixer/SoundSetting");
+        //audioMixer = Managers.Resource.Load<AudioMixer>("AudioMixer/SoundSetting");
         if (audioClip == null)
         {
             return;

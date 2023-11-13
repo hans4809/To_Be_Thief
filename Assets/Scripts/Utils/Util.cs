@@ -27,7 +27,7 @@ public class Util
     {
         if (go == null)
             return null;
-        if(recursive == false) // ���� �ڽ��� ���
+        if(recursive == false) 
         {
             for (int i = 0; i < go.transform.childCount; i++)
             {
@@ -43,7 +43,7 @@ public class Util
             }
 
         }
-        else // ���� �ڽ��� �ƴ� ���
+        else
         {
             foreach(T component in go.GetComponentsInChildren<T>())
             {
