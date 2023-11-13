@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public ObjectManager ObjectManager;
+    public BackGroundManager BackGroundManager;
     public GameManager GameManager;
     public int score;
     Rigidbody2D rigid;
@@ -84,8 +85,17 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "pattern")
         {
+
             GameObject newPattern = ObjectManager.MakeObj(Random.Range(0, 3));
             newPattern.transform.position = new Vector3(0, patternY, 0);
+
+            patternY += 6;
+
+            Debug.Log("진입확인 ");
+
+            GameObject newBackGround = BackGroundManager.MakeMap(Random.Range(0, 3));
+            newBackGround.transform.position = new Vector3(0, patternY, 0);
+
             patternY += 6;
         }
     }
@@ -112,5 +122,4 @@ public class PlayerMove : MonoBehaviour
         }
 
     }
-
 }
