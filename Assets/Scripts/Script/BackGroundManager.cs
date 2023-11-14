@@ -34,7 +34,7 @@ public class BackGroundManager : MonoBehaviour
 
     public GameObject MakeMap(int type)
     {
-        Debug.Log("진입확인2");
+    
         if (type == 0)
         {
             for (int i = 0; i < 5; i++)

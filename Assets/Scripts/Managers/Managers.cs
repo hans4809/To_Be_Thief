@@ -16,6 +16,7 @@ public class Managers : MonoBehaviour
     PoolManager _pool = new PoolManager();
     GameManager _game = new GameManager();
 
+
     public static GameManager Game { get { return Instance._game; } }
     public static UI_Manager UI { get { return Instance._ui; } }
     public static SceneManagerEx Scene { get { return Instance._scene; } }
@@ -69,4 +70,5 @@ public class Managers : MonoBehaviour
         UI.Clear();
         Pool.Clear();
     }
+
 }
