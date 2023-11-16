@@ -79,7 +79,7 @@ public class UI_SelectItem : UI_Popup
     }
     bool CheckItemLevel(SelectItem selectItem)
     {
-        if (Managers.Data.currentLevel[(Define.ItemType)secondItem.itemIndex] == 3 && selectItem.isDebuff) return false;
+        if (Managers.Data.currentLevel[selectItem.itemIndex] == 3 && selectItem.isDebuff) return false;
         return true;
     }
 

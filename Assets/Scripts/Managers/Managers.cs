@@ -37,16 +37,17 @@ public class Managers : MonoBehaviour
         yield return cor1;
         foreach (var temp in _data.itemList)
         {
-            Define.ItemKey itemKey = new Define.ItemKey(temp.itemType, temp.level, temp.isDebuff);
+            Define.ItemKey itemKey = new Define.ItemKey(temp.itemIndex, temp.level, temp.isDebuff);
             Define.ItemData itemData = new Define.ItemData(temp.effect, temp.itemName, temp.itemExplain);
             _data.itemDict.Add(itemKey, itemData);
         }
-        for(int i = 0; i < (int)Define.ItemType.MaxCount; i++)
+        for(int i = 0; i < 7; i++)
         {
-            Define.ItemKey itemKey = new Define.ItemKey((Define.ItemType)i, 1, true);
-            _data.currentLevel.Add((Define.ItemType)i, 1);
-            _data.currentStat.Add((Define.ItemType)i, _data.itemDict[itemKey].effect);
+            Define.ItemKey itemKey = new Define.ItemKey(i, 1, true);
+            _data.currentLevel.Add(i, 1);
+            _data.currentStat.Add(i, _data.itemDict[itemKey].effect);
         }
+        _data.wholeGameData.Add(_data.gameDatas[0]);
     }
     // Update is called once per frame
     void Update()

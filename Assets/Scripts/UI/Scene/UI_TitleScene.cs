@@ -14,22 +14,22 @@ public class UI_TitleScene : UI_Scene
     // Start is called before the first frame update
     void Start()
     {
-        
+        Init();
     }
     public override void Init()
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
-        //GetButton((int)Buttons.GameStart).gameObject.AddUIEvent();
-        //GetButton((int)Buttons.Setting).gameObject.AddUIEvent();
+        GetButton((int)Buttons.GameStart).gameObject.AddUIEvent(StartClicked);
+        GetButton((int)Buttons.Setting).gameObject.AddUIEvent(SettingClicked);
     }
-    public void GameStartClicked(PointerEventData eventData)
+    public void StartClicked(PointerEventData eventData)
     {
-        //Managers.UI.ShowSceneUI
+        Managers.Scene.LoadScene(Define.Scene.MainScene);
     }
     public void SettingClicked(PointerEventData eventData)
     {
-        //Managers.UI.ShowSceneUI
+        Managers.UI.ShowPopUpUI<UI_TitleSetting>();
     }
     // Update is called once per frame
     void Update()

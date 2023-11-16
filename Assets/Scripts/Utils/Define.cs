@@ -4,35 +4,30 @@ using UnityEngine;
 
 public class Define
 {
+    #region 아이템 데이터
     public class ItemTable
     {
-        public ItemType itemType;
+        public int itemIndex;
         public int level;
         public bool isDebuff;
         public float effect;
         public string itemName;
         public string itemExplain;
     }
-    public class ItemKey
+    public struct ItemKey
     {
-        public ItemType itemType { get; set; }
+        public int itemIndex { get; set; }
         public int level { get; set; }
         public bool isDebuff { get; set; }
-        public ItemKey(ItemType _itemType, int _level, bool _isDebuff)
+        public ItemKey(int _itemIndex, int _level, bool _isDebuff)
         {
-            this.itemType = _itemType;
+            this.itemIndex = _itemIndex;
             this.level = _level;
             this.isDebuff = _isDebuff;
         }
         public override int GetHashCode()
         {
-            return itemType.GetHashCode() + level.GetHashCode() + isDebuff.GetHashCode();
-        }
-
-        public override bool Equals(object obj)
-        {
-            ItemKey o = obj as ItemKey;
-            return o != null && (o.itemType == this.itemType || o.level == this.level || o.isDebuff == this.isDebuff);
+            return itemIndex.GetHashCode() + level.GetHashCode() + isDebuff.GetHashCode();
         }
     }
     public class ItemData
@@ -47,23 +42,13 @@ public class Define
             this.itemExplain = _itemExaplain;
         }
     }
-
+    #endregion
     public class GameData
     {
         public int maxScore;
-        public int firstPlay;
+        public bool firstPlay;
     }
-    public enum ItemType
-    {
-        Player_speed,
-        Player_HitBox,
-        CCTV_Time,
-        Thorn_Steps,
-        Rock_SpawnTime,
-        Rock_Speed,
-        Rock_HitBox,
-        MaxCount
-    }
+
     public enum WorldObject
     {
         Unknown,
@@ -74,7 +59,7 @@ public class Define
     {
         Idle,
         Walk,
-        Run
+        Crouch
     }
     public enum UIEvent
     {
@@ -95,8 +80,8 @@ public class Define
     public enum Scene
     {
         Unknown,
+        TitleScene,
         MainScene,
-        DataTest,
         GameScene
     }
     public enum Sound

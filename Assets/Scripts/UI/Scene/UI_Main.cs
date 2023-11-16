@@ -8,9 +8,8 @@ public class UI_Main : UI_Scene
 {
     public enum Buttons
     {
-        StartButton,
-        SettingButton,
-        DataTest
+        ScoreButton,
+        StartButton
     }
     // Start is called before the first frame update
     void Start()
@@ -21,29 +20,18 @@ public class UI_Main : UI_Scene
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
+        GetButton((int)Buttons.ScoreButton).gameObject.AddUIEvent(ScoreClicked);
         GetButton((int)Buttons.StartButton).gameObject.AddUIEvent(StartClicked);
-        GetButton((int)Buttons.SettingButton).gameObject.AddUIEvent(SettingClicked);
-        GetButton((int)Buttons.DataTest).gameObject.AddUIEvent(DataTest);
     }
     public void StartClicked(PointerEventData eventData)
     {
         Managers.Scene.LoadScene(Define.Scene.GameScene);
     }
-    public void SettingClicked(PointerEventData eventData)
+    public void ScoreClicked(PointerEventData eventData)
     {
-        Debug.Log("SettingClicked");
+        Managers.UI.ShowPopUpUI<UI_MaxScore>();
     }
-    public void DataTest(PointerEventData eventData)
-    {
-        //if(DataManager._instance.MaxScore[0].MaxScore < 100)
-        //{
-        //    StartCoroutine(DataManager._instance.SaveData(100));
-        //}
-        //if (CanPopUpUI_SelectItem())
-            Managers.UI.ShowPopUpUI<UI_SelectItem>();
-        //else
-            //Debug.Log("Can PopUp UI_SelectItem");
-    }
+
     // Update is called once per frame
     void Update()
     {

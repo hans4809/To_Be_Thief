@@ -34,7 +34,7 @@ public abstract class BaseController : MonoBehaviour
                     anim.SetBool("isWalk", true);
                     anim.SetBool("isRun", false);
                     break;
-                case Define.State.Run:
+                case Define.State.Crouch:
                     anim.SetBool("isRun", true);
                     break;
             }

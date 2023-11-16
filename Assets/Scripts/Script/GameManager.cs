@@ -23,9 +23,9 @@ public class GameManager
     public void PlayerDied()
     {
         if (score > Managers.Data.gameDatas[0].maxScore)
-            Managers.Data.SaveData(score, 1);
-        else if (Managers.Data.gameDatas[0].firstPlay == 0)
-            Managers.Data.SaveData(Managers.Data.gameDatas[0].maxScore, 1);
+            Managers.Data.SaveData(score, true);
+        else if (!Managers.Data.gameDatas[0].firstPlay)
+            Managers.Data.SaveData(Managers.Data.gameDatas[0].maxScore, true);
         currentState = GameState.End;
         Time.timeScale = 0;
     }
@@ -33,10 +33,10 @@ public class GameManager
     public void Init()
     {
         score = 0;
-        for (int i = 0; i < Managers.Data.itemDict.Count; i++)
+        for (int i = 0; i < 7; i++)
         {
-            Managers.Data.currentLevel[(Define.ItemType)i] = 1;
-            Managers.Data.currentStat[(Define.ItemType)i] = Managers.Data.itemDict[new Define.ItemKey((Define.ItemType)i, 1, true)].effect;
+            Managers.Data.currentLevel[i] = 1;
+            Managers.Data.currentStat[i] = Managers.Data.itemDict[new Define.ItemKey(i, 1, true)].effect;
         }
         currentState = GameState.Playing;
         Time.timeScale = 1;
