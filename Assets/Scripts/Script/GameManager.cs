@@ -33,10 +33,10 @@ public class GameManager
     public void Init()
     {
         score = 0;
-        for (int i = 0; i < Managers.Data.items.Count; i++)
+        for (int i = 0; i < Managers.Data.itemDict.Count; i++)
         {
-            Managers.Data.CurrentLevel[Managers.Data.items[i].itemType] = 1;
-            Managers.Data.CurrentStat[Managers.Data.items[i].itemType] = Managers.Data.items[i].level_1;
+            Managers.Data.currentLevel[(Define.ItemType)i] = 1;
+            Managers.Data.currentStat[(Define.ItemType)i] = Managers.Data.itemDict[new Define.ItemKey((Define.ItemType)i, 1, true)].effect;
         }
         currentState = GameState.Playing;
         Time.timeScale = 1;
@@ -49,13 +49,16 @@ public class GameManager
         if (currentState == GameState.Playing)
         {
             score = (int)player.transform.position.y / 2;
-            if(score == 10 ||(score % 30 == 0 && score > 10))
+            if (CanPopUpUI_ItemButton())
             {
-                if ((score + 1 > itemSelected * 30 && itemSelected != 0) || itemSelected == 0)
+                if (score == 5 || (score % 30 == 0 && score > 5))
                 {
-                    Managers.UI.ShowPopUpUI<UI_SelectItem>();
-                    Time.timeScale = 0;
-                    currentState = GameState.Pause;
+                    if ((score + 1 > itemSelected * 30 && itemSelected != 0) || itemSelected == 0)
+                    {
+                        Managers.UI.ShowPopUpUI<UI_SelectItem>();
+                        Time.timeScale = 0;
+                        currentState = GameState.Pause;
+                    }
                 }
             }
         }
@@ -64,7 +67,7 @@ public class GameManager
     bool CanPopUpUI_ItemButton()
     {
         int notLevel3 = 0;
-        foreach(var var in Managers.Data.CurrentLevel)
+        foreach(var var in Managers.Data.currentLevel)
         {
             if(var.Value != 3)
             {

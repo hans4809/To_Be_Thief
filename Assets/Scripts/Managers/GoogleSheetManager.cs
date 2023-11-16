@@ -13,7 +13,7 @@ public class GoogleSheetManager
     */
     protected const string ADDRESS = "https://docs.google.com/spreadsheets/d/1WZj4mF3424Ta28-ENZQJycE76xYHYTHQKQ14rxHVgjo";
     protected const string SaveADDRESS = "https://script.google.com/macros/s/AKfycbyzwhIItQkkamKuxFhcMIaEr-uIjx1abNgQF1-qHQLzW4jGQpObv38ziHHw8ZdW4YnYwQ/exec";
-    protected const string ItmeRANGE = "A2:E";
+    protected const string ItmeRANGE = "A2:F";
     protected const string GameDataRANGE = "A2:B";
     protected const long SHEET_ID = 55073727;
     /*
@@ -21,15 +21,15 @@ public class GoogleSheetManager
         value -> ���������Ʈ ������ (ó���� ��ũ)
     */
     protected Dictionary<Type, string> sheetDatas = new Dictionary<Type, string>();
-    public List<Define.Items> items = new List<Define.Items>();
+    public List<Define.ItemTable> itemList = new List<Define.ItemTable>();
     public List<Define.GameData> gameDatas = new List<Define.GameData>();
-
+    public Dictionary<Define.ItemKey, Define.ItemData> itemDict = new Dictionary<Define.ItemKey, Define.ItemData>();
     public virtual void Init() 
     {
         
-        if(!sheetDatas.ContainsKey(typeof(Define.Items)))
+        if(!sheetDatas.ContainsKey(typeof(Define.ItemTable)))
         {
-            sheetDatas.Add(typeof(Define.Items), GetTSVAddress(ADDRESS, ItmeRANGE));
+            sheetDatas.Add(typeof(Define.ItemTable), GetTSVAddress(ADDRESS, ItmeRANGE));
         }
         if (!sheetDatas.ContainsKey(typeof(Define.GameData)))
         {
@@ -61,9 +61,9 @@ public class GoogleSheetManager
             }
                 
             sheetDatas[type] = www.downloadHandler.text;
-            if(type == typeof(Define.Items))
+            if(type == typeof(Define.ItemTable))
             {
-                items = GetDatas<Define.Items>(sheetDatas[type]);
+                itemList = GetDatas<Define.ItemTable>(sheetDatas[type]);
             }
             if(type == typeof(Define.GameData))
             {
@@ -85,9 +85,9 @@ public class GoogleSheetManager
         }
 
         sheetDatas[sheetTypes] = www.downloadHandler.text;
-        if (sheetTypes == typeof(Define.Items))
+        if (sheetTypes == typeof(Define.ItemTable))
         {
-            items = GetDatas<Define.Items>(sheetDatas[sheetTypes]);
+            itemList = GetDatas<Define.ItemTable>(sheetDatas[sheetTypes]);
         }
         if (sheetTypes == typeof(Define.GameData))
         {
@@ -154,8 +154,7 @@ public class GoogleSheetManager
                 Debug.LogError($"SpreadSheet Error : {e.Message}");
             }
         }
-
-            return (T)data;
+        return (T)data;
     }
     protected List<T> DataToList<T>(string element)
     {

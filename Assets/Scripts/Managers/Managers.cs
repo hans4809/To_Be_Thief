@@ -35,10 +35,17 @@ public class Managers : MonoBehaviour
     {
         Coroutine cor1 = StartCoroutine(_data.LoadData());
         yield return cor1;
-        for (int i = 0; i < _data.items.Count; i++)
+        foreach (var temp in _data.itemList)
         {
-            _data.CurrentLevel.Add(_data.items[i].itemType, 1);
-            _data.CurrentStat.Add(_data.items[i].itemType, _data.items[i].level_1);
+            Define.ItemKey itemKey = new Define.ItemKey(temp.itemType, temp.level, temp.isDebuff);
+            Define.ItemData itemData = new Define.ItemData(temp.effect, temp.itemName, temp.itemExplain);
+            _data.itemDict.Add(itemKey, itemData);
+        }
+        for(int i = 0; i < (int)Define.ItemType.MaxCount; i++)
+        {
+            Define.ItemKey itemKey = new Define.ItemKey((Define.ItemType)i, 1, true);
+            _data.currentLevel.Add((Define.ItemType)i, 1);
+            _data.currentStat.Add((Define.ItemType)i, _data.itemDict[itemKey].effect);
         }
     }
     // Update is called once per frame
