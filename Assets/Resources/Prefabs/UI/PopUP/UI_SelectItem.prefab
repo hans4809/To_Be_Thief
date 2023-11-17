@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 6489845122639703609}
   - component: {fileID: 6880368129932918393}
   - component: {fileID: 1918849748037416614}
+  - component: {fileID: -8446384190685288979}
   m_Layer: 5
   m_Name: UI_SelectItem
   m_TagString: Untagged
@@ -276,3 +277,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &-8446384190685288979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3377033228848372585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3fd7897d626d344a4dd633cf570d31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debuff_prob: 50
+  firstItemButton: {fileID: 0}
+  secondItemButton: {fileID: 0}
+  thirdItemButton: {fileID: 0}
+  non_Level1Item: 

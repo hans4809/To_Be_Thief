@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_TitleSetting : UI_Popup
+public class UI_GameSetting : UI_Popup
 {
     Slider volumeSlider;
     public enum GameObjects
     {
-        CloseButton,
-        VolumeSlider
+        VolumeSlider,
+        ReplayButton,
+        ContinueButton
     }
     // Start is called before the first frame update
     void Start()
@@ -21,9 +22,9 @@ public class UI_TitleSetting : UI_Popup
     {
         base.Init();
         Bind<GameObject>(typeof(GameObjects));
-        Get<GameObject>((int)GameObjects.CloseButton).AddUIEvent(CloseButtonClicked);
         volumeSlider = Get<GameObject>((int)GameObjects.VolumeSlider).GetComponent<Slider>();
-        volumeSlider.gameObject.AddUIEvent(AdjustVolume, Define.UIEvent.Drag);
+        Get<GameObject>((int)GameObjects.ReplayButton).AddUIEvent(ReplayButtonClicked);
+        Get<GameObject>((int)GameObjects.ContinueButton).AddUIEvent(ContinueClicked);
     }
     public void AdjustVolume(PointerEventData data)
     {
@@ -33,10 +34,16 @@ public class UI_TitleSetting : UI_Popup
         }
         Managers.Sound.audioMixer.SetFloat("Master", Mathf.Log10(volumeSlider.value) * 20);
     }
-    public void CloseButtonClicked(PointerEventData data)
+    public void ReplayButtonClicked(PointerEventData data)
+    {
+        Managers.Game.GameStart();
+    }
+    public void ContinueClicked(PointerEventData data)
     {
         ClosePopUPUI();
+        Time.timeScale = 1;
     }
+
     // Update is called once per frame
     void Update()
     {

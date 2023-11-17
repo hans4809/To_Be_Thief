@@ -37,7 +37,7 @@ public class UI_EventHandler : MonoBehaviour, IPointerClickHandler, IBeginDragHa
         }
     }
 
-    public void OnPointerClick(PointerEventData eventData) // Ŭ������ �� �̺�Ʈ �������̽�
+    public void OnPointerClick(PointerEventData eventData)
     {
         if (OnClickHandler != null)
         {

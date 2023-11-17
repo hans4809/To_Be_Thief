@@ -16,9 +16,6 @@ public class GameManager
         End
     }
     public GameState currentState;
-    void Update()
-    {
-    }
     //플레이어 죽을 때 실행시킬 함수
     public void PlayerDied()
     {
@@ -28,11 +25,14 @@ public class GameManager
             Managers.Data.SaveData(Managers.Data.gameDatas[0].maxScore, true);
         currentState = GameState.End;
         Time.timeScale = 0;
+        Managers.UI.ShowPopUpUI<UI_Died>();
     }
     //인게임 데이터 초기화 
-    public void Init()
+    public void GameStart()
     {
+        Managers.UI.CloseAllPopUPUI();
         score = 0;
+        if (player != null) { player.transform.localPosition = new Vector3(0, 0.44f, 0); }
         for (int i = 0; i < 7; i++)
         {
             Managers.Data.currentLevel[i] = 1;
@@ -42,7 +42,7 @@ public class GameManager
         Time.timeScale = 1;
         itemSelected = 0;
     }
-    //인게임 동작 중 실행시킬 함수
+    //인게임 중 Update문으로 실행시킬 함수
     public void OnUpdate()
     {
         if (player == null) return;

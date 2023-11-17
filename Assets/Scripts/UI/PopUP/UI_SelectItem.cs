@@ -15,7 +15,7 @@ public class UI_SelectItem : UI_Popup
     public SelectItem secondItem = new SelectItem();
     public SelectItem thirdItem = new SelectItem();
 
-    public int debuff_prob = 50;
+    public int debuff_prob = 95;
 
     public UI_ItemButton firstItemButton = new UI_ItemButton();
     public UI_ItemButton secondItemButton = new UI_ItemButton();

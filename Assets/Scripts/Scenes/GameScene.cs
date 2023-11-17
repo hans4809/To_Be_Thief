@@ -6,18 +6,16 @@ public class GameScene : BaseScene
 {
     public override void Clear()
     {
-        
     }
     protected override void Init()
     {
         base.Init();
         SceneType = Define.Scene.GameScene;
-        Managers.Game.Init();
+        Managers.Game.GameStart();
         Managers.Game.player = FindObjectOfType<PlayerMove>();
         Managers.UI.ShowSceneUI<UI_GameScene>();
         Managers.Sound.Play("Sounds/BGM/GameBGM");
     }
-    // Start is called before the first frame update
     // Update is called once per frame
     void Update()
     {

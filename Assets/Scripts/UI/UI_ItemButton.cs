@@ -22,7 +22,7 @@ public class UI_ItemButton : UI_Base
 
     public override void Init()
     {
-        itemKey = new Define.ItemKey(itemIndex, Managers.Data.currentLevel[itemIndex], isDebuff);
+        itemKey = new Define.ItemKey(itemIndex, Managers.Data.currentLevel[itemIndex] + 1, isDebuff);
         Bind<GameObject>(typeof(GameObjects));
         Get<GameObject>((int)GameObjects.ItemImage).GetComponent<Image>().sprite = Managers.Resource.Load<Sprite>($"Images/{Managers.Data.itemDict[itemKey].itemName}");
         Get<GameObject>((int)GameObjects.ItemName).GetComponent<Text>().text = $"{Managers.Data.itemDict[itemKey].itemName}";

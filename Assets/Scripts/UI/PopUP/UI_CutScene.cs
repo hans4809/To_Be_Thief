@@ -16,7 +16,7 @@ public class UI_CutScene : UI_Popup
     }
     IEnumerator CutScene()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         Managers.UI.ClosePopUpUI();
     }
     // Update is called once per frame
