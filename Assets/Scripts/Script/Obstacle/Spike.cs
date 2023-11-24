@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Spike : MonoBehaviour
 {
-    public float SpikeTime;
-    void Start()
-    {
-        SpikeTime = 1.5f;
-        InvokeRepeating("Appear", 0, SpikeTime);
-    }
+    public float SpikeSpawn = 4;
+    float timer = 0.0f;
 
-    void Appear()
+    void Update()
     {
-        gameObject.SetActive(!gameObject.activeSelf);
+        timer += Time.deltaTime;
+        if (timer >= SpikeSpawn)
+        {
+            gameObject.SetActive(true);
+            if (timer >= SpikeSpawn + 1)
+            {
+                gameObject.SetActive(false);
+                timer = 0;
+            }
+        }
     }
 }
