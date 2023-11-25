@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 6373439139251951028}
   m_Layer: 0
   m_Name: Rock pattern
-  m_TagString: pattern
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 7831744580766979731}
   m_Layer: 0
   m_Name: Rock
-  m_TagString: Obstacle
+  m_TagString: ObstacleHitBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -11,6 +11,9 @@ public class PlayerMove : MonoBehaviour
     public int MapCode = 0; // 무슨 맵을 생성하느냐에 대한 변수 
     Rigidbody2D rigid;
     Animator anim;
+    private int CountBreak = 0;
+    private int[] PatternCode = new int[] { 0, 3, 2 }; // 임시 패턴 코드 현재 0-> CCTV, 3 -> 휴식 , 2 -> 톱니바퀴입니다. 
+
 
     public float Playersize_level;  // 크기 변수
     int patternY = 15;
@@ -23,8 +26,9 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
+     
         Playersize_level = 1.3f;
-        player_speed = 1.5f;
+        player_speed = 3f;
         transform.localScale = new Vector3(Playersize_level, Playersize_level, 1f); // 크기 설정
         /* 
          * 원래 유정님이 하신 것도 잘하셨습니다. 그런데 그냥 플레이어에 마우스 입력을 받아버리면
@@ -79,16 +83,33 @@ public class PlayerMove : MonoBehaviour
         if (evt != Define.MouseEvent.End)
             return;
         anim.SetBool("isWalking", true);
-        player_speed = 1.5f;//DataManager._instance.items[(int)Define.ItemType.Player_speed].level_1;
+        player_speed = 3f;//DataManager._instance.items[(int)Define.ItemType.Player_speed].level_1;
     }
     //Make pattern
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "pattern")
         {
+            if (CountBreak == 0)
+            {
+                //데이터 받고 
+                GameObject newPattern_test = ObjectManager.MakeObj(PatternCode[CountBreak]);
+                newPattern_test.transform.position = new Vector3(0, patternY, 0);
+                CountBreak++;
+            }
+            else if (CountBreak==1)
+            {
+                GameObject newPattern_test = ObjectManager.MakeObj(PatternCode[CountBreak]);
+                newPattern_test.transform.position = new Vector3(0, patternY, 0);
+                CountBreak++;
+            }
 
-            GameObject newPattern = ObjectManager.MakeObj(Random.Range(0, 3));
-            newPattern.transform.position = new Vector3(0, patternY, 0);
+            else if (CountBreak==2)
+            {
+                GameObject newPattern_test = ObjectManager.MakeObj(PatternCode[CountBreak]);
+                newPattern_test.transform.position = new Vector3(0, patternY, 0);
+                CountBreak=0;
+            }
 
             GameObject newBackGround = BackGroundManager.MakeMap(MapCode);  //맵 코드를 받아서 맵 생성 
             newBackGround.transform.position = new Vector3(0, patternY, 0);
@@ -104,15 +125,26 @@ public class PlayerMove : MonoBehaviour
         for (int i = 0; i < patterns.Length; i++)
         {
             if (gameObject.transform.position.y - patterns[i].transform.position.y > 15)
+            {
                 patterns[i].SetActive(false);
+            }
         }
+        GameObject[] Objects = GameObject.FindGameObjectsWithTag("Obstacle");
+        for (int i = 0; i < Objects.Length; i++)
+        {
+            if (gameObject.transform.position.y - Objects[i].transform.position.y > 15)
+            {
+                Objects[i].SetActive(false);
+            }
+        }
+
         yield return new WaitForSeconds(0.1f);
     }
     
     //GameOver
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Obstacle")
+        if (collision.gameObject.tag == "ObstacleHitBox")
         {
             Debug.Log("�׾����ϴ�.");
             Managers.Game.PlayerDied();

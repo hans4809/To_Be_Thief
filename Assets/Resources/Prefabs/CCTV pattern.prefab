@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7110734866523005245}
   m_Layer: 0
   m_Name: CCTV pattern
-  m_TagString: pattern
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 8183975850725673456}
   m_Layer: 0
   m_Name: light
-  m_TagString: Obstacle
+  m_TagString: ObstacleHitBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

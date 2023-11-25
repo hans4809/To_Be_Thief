@@ -10,13 +10,13 @@ public class ObjectManager : MonoBehaviour
     GameObject[] mapCCTV;
     GameObject[] mapRock;
     GameObject[] mapSpike;
-
+    GameObject[] Break;
     void Awake()
     {
         mapCCTV = new GameObject[5];
         mapRock = new GameObject[5];
         mapSpike = new GameObject[5];
-
+        Break = new GameObject[5];
         Generate();
     }
 
@@ -30,6 +30,8 @@ public class ObjectManager : MonoBehaviour
             mapRock[i].SetActive(false);
             mapSpike[i] = Instantiate(Prefabs[2],transform);
             mapSpike[i].SetActive(false);
+            Break[i]=Instantiate(Prefabs[3], transform);
+            Break[i].SetActive(false);
         }
     }
 
@@ -67,6 +69,18 @@ public class ObjectManager : MonoBehaviour
                 {
                     mapSpike[i].SetActive(true);
                     return mapSpike[i];
+                }
+            }
+        }
+
+        if(type==3)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                if (!Break[i].activeSelf)
+                {
+                    Break[i].SetActive(true);
+                    return Break[i];
                 }
             }
         }

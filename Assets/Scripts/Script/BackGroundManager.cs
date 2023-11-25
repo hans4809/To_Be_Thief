@@ -12,16 +12,16 @@ public class BackGroundManager : MonoBehaviour
 
     void Awake()
     {
-        Map_Round_1 = new GameObject[5];
-        Map_Round_2 = new GameObject[5];
-        Map_Round_3 = new GameObject[5];
+        Map_Round_1 = new GameObject[7];
+        Map_Round_2 = new GameObject[7];
+        Map_Round_3 = new GameObject[7];
 
         Generate();
     }
 
     void Generate()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 7; i++)
         {
             Map_Round_1[i] = Instantiate(Prefabs[0], transform);
             Map_Round_1[i].SetActive(false);
@@ -37,7 +37,7 @@ public class BackGroundManager : MonoBehaviour
     
         if (type == 0)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 7; i++)
             {
                 if (!Map_Round_1[i].activeSelf)
                 {
@@ -49,7 +49,7 @@ public class BackGroundManager : MonoBehaviour
 
         if (type == 1)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 7; i++)
             {
                 if (!Map_Round_2[i].activeSelf)
                 {
@@ -61,7 +61,7 @@ public class BackGroundManager : MonoBehaviour
 
         if (type == 2)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 7; i++)
             {
                 if (!Map_Round_3[i].activeSelf)
                 {
