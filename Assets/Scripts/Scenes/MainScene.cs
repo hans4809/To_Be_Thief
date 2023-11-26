@@ -6,7 +6,7 @@ public class MainScene : BaseScene
 {
     private void Start()
     {
-        if (!Managers.Data.wholeGameData[0].firstPlay)
+        if (!Managers.Data.gameData.firstPlay)
         {
             Managers.UI.ShowPopUpUI<UI_CutScene>();
         }

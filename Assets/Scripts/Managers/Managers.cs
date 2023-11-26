@@ -47,7 +47,11 @@ public class Managers : MonoBehaviour
             _data.currentLevel.Add(i, 1);
             _data.currentStat.Add(i, _data.itemDict[itemKey].effect);
         }
-        _data.wholeGameData.Add(_data.gameDatas[0]);
+        for(int i = 0; i<_data.scoreList.Count; i++)
+        {
+            _data.scoreDatas.Add(_data.scoreList[i]);
+        }
+
     }
     // Update is called once per frame
     void Update()

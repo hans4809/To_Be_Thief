@@ -19,10 +19,12 @@ public class GameManager
     //플레이어 죽을 때 실행시킬 함수
     public void PlayerDied()
     {
-        if (score > Managers.Data.gameDatas[0].maxScore)
-            Managers.Data.SaveData(score, true);
-        else if (!Managers.Data.gameDatas[0].firstPlay)
-            Managers.Data.SaveData(Managers.Data.gameDatas[0].maxScore, true);
+        if (score > Managers.Data.gameData.maxScore)
+        {
+            Managers.Data.gameData.maxScore = score;
+            Managers.Data.gameData.firstPlay = true;
+            Managers.Data.jsonManager.Save(Managers.Data.gameData);
+        }
         currentState = GameState.End;
         Time.timeScale = 0;
         Managers.UI.ShowPopUpUI<UI_Died>();

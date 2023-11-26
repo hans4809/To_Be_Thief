@@ -43,12 +43,40 @@ public class Define
         }
     }
     #endregion
-    public class GameData
+    public class ScoreData
     {
+        public string player_ID;
         public int maxScore;
-        public bool firstPlay;
     }
-
+    [System.Serializable]
+    public class WholeGameData
+    {
+        public bool firstPlay;
+        public int maxScore;
+        public WholeGameData()
+        {
+            firstPlay = false;
+            maxScore = 0;
+        }
+    }
+    [System.Serializable]
+    public class PatternDatas
+    {
+        public List<PatternData> patterns;
+    }
+    [System.Serializable]
+    public class PatternData
+    {
+        public int firstObstacle;
+        public int secondObstacle;
+        public int thirdObstacle;
+        public PatternData()
+        {
+            firstObstacle = 0;
+            secondObstacle = 0;
+            thirdObstacle = 0;
+        }
+    }
     public enum WorldObject
     {
         Unknown,
@@ -76,7 +104,6 @@ public class Define
         Click,
         End
     }
-
     public enum Scene
     {
         Unknown,

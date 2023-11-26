@@ -21,7 +21,7 @@ public class UI_MaxScore : UI_Popup
         base.Init();
         Bind<GameObject>(typeof(GameObjects));
         Get<GameObject>((int)GameObjects.CloseButton).AddUIEvent(CloseClicked);
-        Get<GameObject>((int)GameObjects.MaxScoreText).GetComponent<Text>().text = Managers.Data.wholeGameData[0].maxScore.ToString();
+        Get<GameObject>((int)GameObjects.MaxScoreText).GetComponent<Text>().text = Managers.Data.gameData.maxScore.ToString();
     }
     public void CloseClicked(PointerEventData eventData)
     {

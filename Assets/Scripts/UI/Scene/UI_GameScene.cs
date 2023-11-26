@@ -24,7 +24,7 @@ public class UI_GameScene : UI_Scene
         base.Init();
         Bind<GameObject>(typeof(GameObjects));
         ScoreText = Get<GameObject>((int)GameObjects.ScoreText).GetComponent<Text>();
-        Get<GameObject>((int)GameObjects.MaxScoreText).GetComponent<Text>().text = "최고 칸 수 : " + Managers.Data.wholeGameData[0].maxScore;
+        Get<GameObject>((int)GameObjects.MaxScoreText).GetComponent<Text>().text = "최고 칸 수 : " + Managers.Data.gameData.maxScore;
         Get<GameObject>((int)GameObjects.PauseButton).AddUIEvent(PauseClicked);
         ScoreText.text = "현재 칸 수 : " + Managers.Game.score;
     }
