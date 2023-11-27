@@ -93,29 +93,6 @@ public class GoogleSheetManager
             }
         }
     }
-    public IEnumerator LoadData(Type sheetTypes)
-    {
-        UnityWebRequest www = UnityWebRequest.Get(sheetDatas[sheetTypes]);
-        yield return www.SendWebRequest();
-
-        if (www.isDone)
-            Debug.Log(www.downloadHandler.text);
-        else
-        {
-            Debug.Log(www.error);
-            yield return null;
-        }
-
-        sheetDatas[sheetTypes] = www.downloadHandler.text;
-        if (sheetTypes == typeof(Define.ItemTable))
-        {
-            itemList = GetDatas<Define.ItemTable>(sheetDatas[sheetTypes]);
-        }
-        if (sheetTypes == typeof(Define.ScoreData))
-        {
-            scoreList = GetDatas<Define.ScoreData>(sheetDatas[sheetTypes]);
-        }
-    }
     /// <summary>
     /// 함수 이름 : SaveData
     /// 기능 : 스프레드 시트에 데이터 보냄

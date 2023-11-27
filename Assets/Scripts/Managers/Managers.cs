@@ -15,6 +15,8 @@ public class Managers : MonoBehaviour
     SoundManager _sound = new SoundManager();
     PoolManager _pool = new PoolManager();
     GameManager _game = new GameManager();
+    JsonManager _json = new JsonManager();
+    GoogleSheetManager _googleSheet = new GoogleSheetManager();
 
 
     public static GameManager Game { get { return Instance._game; } }
@@ -25,6 +27,8 @@ public class Managers : MonoBehaviour
     public static DataManager Data { get { return Instance._data; } }
     public static SoundManager Sound { get { return Instance._sound; } }
     public static PoolManager Pool { get { return Instance._pool; } }
+    public static GoogleSheetManager GoogleSheet {  get { return Instance._googleSheet; } }
+    public static JsonManager Json { get { return Instance._json; } }
 
     void Start()
     {
@@ -33,25 +37,26 @@ public class Managers : MonoBehaviour
     }
     public IEnumerator WaitForDataLoaing()
     {
-        Coroutine cor1 = StartCoroutine(_data.LoadData());
+        Coroutine cor1 = StartCoroutine(_googleSheet.LoadData());
+        _data.patternDatas = _json.Load<Define.PatternDatas>();
+        _data.gameData = _json.Load<Define.WholeGameData>();
         yield return cor1;
-        foreach (var temp in _data.itemList)
+        foreach (var temp in _googleSheet.itemList)
         {
             Define.ItemKey itemKey = new Define.ItemKey(temp.itemIndex, temp.level, temp.isDebuff);
             Define.ItemData itemData = new Define.ItemData(temp.effect, temp.itemName, temp.itemExplain);
-            _data.itemDict.Add(itemKey, itemData);
+            _googleSheet.itemDict.Add(itemKey, itemData);
         }
         for(int i = 0; i < 7; i++)
         {
             Define.ItemKey itemKey = new Define.ItemKey(i, 1, true);
             _data.currentLevel.Add(i, 1);
-            _data.currentStat.Add(i, _data.itemDict[itemKey].effect);
+            _data.currentStat.Add(i, _googleSheet.itemDict[itemKey].effect);
         }
-        for(int i = 0; i<_data.scoreList.Count; i++)
+        for(int i = 0; i< _googleSheet.scoreList.Count; i++)
         {
-            _data.scoreDatas.Add(_data.scoreList[i]);
+            _data.scoreDatas.Add(_googleSheet.scoreList[i]);
         }
-
     }
     // Update is called once per frame
     void Update()
@@ -72,7 +77,7 @@ public class Managers : MonoBehaviour
 
         s_instance._pool.Init();
         s_instance._sound.Init();
-        s_instance._data.Init();
+        s_instance._googleSheet.Init();
     }
     public static void Clear()
     {

@@ -23,7 +23,7 @@ public class GameManager
         {
             Managers.Data.gameData.maxScore = score;
             Managers.Data.gameData.firstPlay = true;
-            Managers.Data.jsonManager.Save(Managers.Data.gameData);
+            Managers.Json.Save(Managers.Data.gameData);
         }
         currentState = GameState.End;
         Time.timeScale = 0;
@@ -38,7 +38,7 @@ public class GameManager
         for (int i = 0; i < 7; i++)
         {
             Managers.Data.currentLevel[i] = 1;
-            Managers.Data.currentStat[i] = Managers.Data.itemDict[new Define.ItemKey(i, 1, true)].effect;
+            Managers.Data.currentStat[i] = Managers.GoogleSheet.itemDict[new Define.ItemKey(i, 1, true)].effect;
         }
         currentState = GameState.Playing;
         Time.timeScale = 1;

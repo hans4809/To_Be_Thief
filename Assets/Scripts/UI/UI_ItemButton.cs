@@ -24,9 +24,9 @@ public class UI_ItemButton : UI_Base
     {
         itemKey = new Define.ItemKey(itemIndex, Managers.Data.currentLevel[itemIndex] + 1, isDebuff);
         Bind<GameObject>(typeof(GameObjects));
-        Get<GameObject>((int)GameObjects.ItemImage).GetComponent<Image>().sprite = Managers.Resource.Load<Sprite>($"Images/{Managers.Data.itemDict[itemKey].itemName}");
-        Get<GameObject>((int)GameObjects.ItemName).GetComponent<Text>().text = $"{Managers.Data.itemDict[itemKey].itemName}";
-        Get<GameObject>((int)GameObjects.ItemUse).GetComponent<Text>().text = $"{Managers.Data.itemDict[itemKey].itemExplain}";
+        Get<GameObject>((int)GameObjects.ItemImage).GetComponent<Image>().sprite = Managers.Resource.Load<Sprite>($"Images/{Managers.GoogleSheet.itemDict[itemKey].itemName}");
+        Get<GameObject>((int)GameObjects.ItemName).GetComponent<Text>().text = $"{Managers.GoogleSheet.itemDict[itemKey].itemName}";
+        Get<GameObject>((int)GameObjects.ItemUse).GetComponent<Text>().text = $"{Managers.GoogleSheet.itemDict[itemKey].itemExplain}";
         gameObject.AddUIEvent(ButtonClicked);
     }
     
@@ -41,10 +41,10 @@ public class UI_ItemButton : UI_Base
             switch (Managers.Data.currentLevel[itemIndex])
             {
                 case 2:
-                    Managers.Data.currentStat[itemIndex] = Managers.Data.itemDict[itemKey].effect;
+                    Managers.Data.currentStat[itemIndex] = Managers.GoogleSheet.itemDict[itemKey].effect;
                     break;
                 case 3:
-                    Managers.Data.currentStat[itemIndex] = Managers.Data.itemDict[itemKey].effect;
+                    Managers.Data.currentStat[itemIndex] = Managers.GoogleSheet.itemDict[itemKey].effect;
                     break;
             }
         }
@@ -55,10 +55,10 @@ public class UI_ItemButton : UI_Base
             switch (Managers.Data.currentLevel[itemIndex])
             {
                 case 1:
-                    Managers.Data.currentStat[itemIndex] = Managers.Data.itemDict[itemKey].effect;
+                    Managers.Data.currentStat[itemIndex] = Managers.GoogleSheet.itemDict[itemKey].effect;
                     break;
                 case 2:
-                    Managers.Data.currentStat[itemIndex] = Managers.Data.itemDict[itemKey].effect;
+                    Managers.Data.currentStat[itemIndex] = Managers.GoogleSheet.itemDict[itemKey].effect;
                     break;
             }
         }
