@@ -11,8 +11,15 @@ public class PlayerMove : MonoBehaviour
     public int MapCode = 0; // 무슨 맵을 생성하느냐에 대한 변수 
     Rigidbody2D rigid;
     Animator anim;
-    private int CountBreak = 0;
+    private int CountBreak,value = 0;
+    TextAsset jsonAsset;
+    PatternList patternList;
+    int PatternRandomCode;
+
     private int[] PatternCode = new int[] { 0, 3, 2 }; // 임시 패턴 코드 현재 0-> CCTV, 3 -> 휴식 , 2 -> 톱니바퀴입니다. 
+
+    public class PatternList { public List<Define.PatternData> patterns; } // jsonManager 통하지않고 값 받기
+   
 
 
     public float Playersize_level;  // 크기 변수
@@ -26,7 +33,9 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
-     
+
+
+
         Playersize_level = 1.3f;
         player_speed = 3f;
         transform.localScale = new Vector3(Playersize_level, Playersize_level, 1f); // 크기 설정
@@ -90,23 +99,35 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "pattern")
         {
+            
             if (CountBreak == 0)
             {
+                PatternRandomCode = Random.Range(0,24);
+                jsonAsset = Resources.Load<TextAsset>("Data/PatternDatas"); // jsonManager 안거치고 받기
+                patternList = JsonUtility.FromJson<PatternList>(jsonAsset.text);  // jsonManager 안거치고 받기
                 //데이터 받고 
-                GameObject newPattern_test = ObjectManager.MakeObj(PatternCode[CountBreak]);
+                value = patternList.patterns[PatternRandomCode].firstObstacle;
+                Debug.Log(value);
+                GameObject newPattern_test = ObjectManager.MakeObj(value);
                 newPattern_test.transform.position = new Vector3(0, patternY, 0);
                 CountBreak++;
             }
             else if (CountBreak==1)
             {
-                GameObject newPattern_test = ObjectManager.MakeObj(PatternCode[CountBreak]);
+                jsonAsset = Resources.Load<TextAsset>("Data/PatternDatas"); // jsonManager 안거치고 받기
+                patternList = JsonUtility.FromJson<PatternList>(jsonAsset.text);  // jsonManager 안거치고 받기
+                value = patternList.patterns[PatternRandomCode].secondObstacle;
+                GameObject newPattern_test = ObjectManager.MakeObj(value);
                 newPattern_test.transform.position = new Vector3(0, patternY, 0);
                 CountBreak++;
             }
 
             else if (CountBreak==2)
             {
-                GameObject newPattern_test = ObjectManager.MakeObj(PatternCode[CountBreak]);
+                jsonAsset = Resources.Load<TextAsset>("Data/PatternDatas"); // jsonManager 안거치고 받기
+                patternList = JsonUtility.FromJson<PatternList>(jsonAsset.text);  // jsonManager 안거치고 받기
+                value = patternList.patterns[PatternRandomCode].thirdObstacle;
+                GameObject newPattern_test = ObjectManager.MakeObj(value);
                 newPattern_test.transform.position = new Vector3(0, patternY, 0);
                 CountBreak=0;
             }
