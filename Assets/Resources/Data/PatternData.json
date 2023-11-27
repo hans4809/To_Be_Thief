@@ -1,0 +1,125 @@
+{
+  "pattenrs": [
+    {
+      "firstObstacle": 0,
+      "secondObstacle": 1,
+      "thirdObstacle": 2
+    },
+    {
+      "firstObstacle": 0,
+      "secondObstacle": 1,
+      "thirdObstacle": 3
+    },
+    {
+      "firstObstacle": 0,
+      "secondObstacle": 2,
+      "thirdObstacle": 1
+    },
+    {
+      "firstObstacle": 0,
+      "secondObstacle": 2,
+      "thirdObstacle": 3
+    },
+    {
+      "firstObstacle": 0,
+      "secondObstacle": 3,
+      "thirdObstacle": 1
+    },
+    {
+      "firstObstacle": 0,
+      "secondObstacle": 3,
+      "thirdObstacle": 2
+    },
+    {
+      "firstObstacle": 1,
+      "secondObstacle": 0,
+      "thirdObstacle": 1
+    },
+    {
+      "firstObstacle": 1,
+      "secondObstacle": 0,
+      "thirdObstacle": 2
+    },
+    {
+      "firstObstacle": 1,
+      "secondObstacle": 0,
+      "thirdObstacle": 3
+    },
+    {
+      "firstObstacle": 2,
+      "secondObstacle": 0,
+      "thirdObstacle": 1
+    },
+    {
+      "firstObstacle": 2,
+      "secondObstacle": 0,
+      "thirdObstacle": 2
+    },
+    {
+      "firstObstacle": 2,
+      "secondObstacle": 0,
+      "thirdObstacle": 3
+    },
+    {
+      "firstObstacle": 3,
+      "secondObstacle": 0,
+      "thirdObstacle": 1
+    },
+    {
+      "firstObstacle": 3,
+      "secondObstacle": 0,
+      "thirdObstacle": 2
+    },
+    {
+      "firstObstacle": 3,
+      "secondObstacle": 0,
+      "thirdObstacle": 3
+    },
+    {
+      "firstObstacle": 1,
+      "secondObstacle": 1,
+      "thirdObstacle": 0
+    },
+    {
+      "patterns": 17,
+      "firstObstacle": 1,
+      "secondObstacle": 2,
+      "thirdObstacle": 0
+    },
+    {
+      "firstObstacle": 1,
+      "secondObstacle": 3,
+      "thirdObstacle": 0
+    },
+    {
+      "firstObstacle": 2,
+      "secondObstacle": 1,
+      "thirdObstacle": 0
+    },
+    {
+      "firstObstacle": 2,
+      "secondObstacle": 2,
+      "thirdObstacle": 0
+    },
+    {
+      "firstObstacle": 2,
+      "secondObstacle": 3,
+      "thirdObstacle": 0
+    },
+    {
+      "firstObstacle": 3,
+      "secondObstacle": 1,
+      "thirdObstacle": 0
+    },
+    {
+      "firstObstacle": 3,
+      "secondObstacle": 2,
+      "thirdObstacle": 0
+    },
+    {
+      "firstObstacle": 3,
+      "secondObstacle": 3,
+      "thirdObstacle": 0
+    }
+  ]
+}

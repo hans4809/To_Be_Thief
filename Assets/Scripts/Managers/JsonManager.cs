@@ -79,7 +79,7 @@ public class JsonManager
         }
         else
         {
-            TextAsset textAsset = Managers.Resource.Load<TextAsset>($"Data/{typeof(T).Name}");
+            TextAsset textAsset = Resources.Load<TextAsset>($"Data/{typeof(T).Name}");
             Debug.Log(textAsset.text);
             data = JsonUtility.FromJson<T>(textAsset.text);
             Save<T>(data);
