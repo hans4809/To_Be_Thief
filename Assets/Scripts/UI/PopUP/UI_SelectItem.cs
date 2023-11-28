@@ -58,7 +58,9 @@ public class UI_SelectItem : UI_Popup
 
     bool IsDebuff()
     {
-        if (Random.Range(1, 100) <= debuff_prob || non_Level1Item.Count == 0)
+        if (non_Level1Item.Count == 0)
+            return true;
+        else if (Random.Range(1, 100) <= debuff_prob)
             return true;
         else
             return false;
@@ -74,7 +76,7 @@ public class UI_SelectItem : UI_Popup
         }
         else
         {
-            selectItem.itemIndex = non_Level1Item[Random.Range(0, non_Level1Item.Count)];
+            selectItem.itemIndex = non_Level1Item[Random.Range(0, non_Level1Item.Count - 1)];
         }
     }
     bool CheckItemLevel(SelectItem selectItem)

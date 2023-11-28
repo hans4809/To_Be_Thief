@@ -22,7 +22,14 @@ public class UI_ItemButton : UI_Base
 
     public override void Init()
     {
-        itemKey = new Define.ItemKey(itemIndex, Managers.Data.currentLevel[itemIndex] + 1, isDebuff);
+        if (isDebuff)
+        {
+            itemKey = new Define.ItemKey(itemIndex, Managers.Data.currentLevel[itemIndex] + 1, isDebuff);
+        }
+        else
+        {
+            itemKey = new Define.ItemKey(itemIndex, 0, isDebuff);
+        }
         Bind<GameObject>(typeof(GameObjects));
         Get<GameObject>((int)GameObjects.ItemImage).GetComponent<Image>().sprite = Managers.Resource.Load<Sprite>($"Images/{Managers.GoogleSheet.itemDict[itemKey].itemName}");
         Get<GameObject>((int)GameObjects.ItemName).GetComponent<Text>().text = $"{Managers.GoogleSheet.itemDict[itemKey].itemName}";
@@ -52,6 +59,7 @@ public class UI_ItemButton : UI_Base
         {
             Managers.Data.currentLevel[itemIndex]--;
             itemKey.level = Managers.Data.currentLevel[itemIndex];
+            itemKey.isDebuff = true;
             switch (Managers.Data.currentLevel[itemIndex])
             {
                 case 1:
