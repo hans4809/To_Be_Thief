@@ -167,6 +167,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "ObstacleHitBox")
         {
+            patternY = 15;
             Debug.Log("�׾����ϴ�.");
             Managers.Game.PlayerDied();
         }
