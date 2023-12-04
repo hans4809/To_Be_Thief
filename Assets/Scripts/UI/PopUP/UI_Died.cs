@@ -30,6 +30,21 @@ public class UI_Died : UI_Popup
     }
     public void ReplayClicked(PointerEventData eventData)
     {
+        //오브젝트 초기화 
+        // BackGround 초기화
+        GameObject[] patterns = GameObject.FindGameObjectsWithTag("pattern");
+        for (int i = 0; i < patterns.Length; i++)
+        {
+            if (patterns[i].activeSelf)
+                patterns[i].SetActive(false);
+        }
+        //Obastacle 초기화
+        GameObject[] Objects = GameObject.FindGameObjectsWithTag("Obstacle");
+        for (int i = 0; i < Objects.Length; i++)
+        { if (Objects[i].activeSelf)
+                Objects[i].SetActive(false);
+        }
+
         Managers.Game.GameStart();
     }
     // Update is called once per frame

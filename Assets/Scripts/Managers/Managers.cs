@@ -17,6 +17,7 @@ public class Managers : MonoBehaviour
     GameManager _game = new GameManager();
     JsonManager _json = new JsonManager();
     GoogleSheetManager _googleSheet = new GoogleSheetManager();
+    BackGroundManager _backGround = new BackGroundManager();
 
 
     public static GameManager Game { get { return Instance._game; } }
@@ -29,6 +30,8 @@ public class Managers : MonoBehaviour
     public static PoolManager Pool { get { return Instance._pool; } }
     public static GoogleSheetManager GoogleSheet {  get { return Instance._googleSheet; } }
     public static JsonManager Json { get { return Instance._json; } }
+
+    public static BackGroundManager BackGround {  get { return Instance._backGround; } }
 
     void Start()
     {

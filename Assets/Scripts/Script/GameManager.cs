@@ -32,9 +32,10 @@ public class GameManager
     //인게임 데이터 초기화 
     public void GameStart()
     {
+        player.MakeStartPattern();
         Managers.UI.CloseAllPopUPUI();
         score = 0;
-        if (player != null) { player.transform.localPosition = new Vector3(0, 0.44f, 0); }
+        if (player != null) { player.transform.localPosition = new Vector3(0, 0, 0); }
         for (int i = 0; i < 7; i++)
         {
             Managers.Data.currentLevel[i] = 1;

@@ -11,15 +11,13 @@ public class PlayerMove : MonoBehaviour
     public int MapCode = 0; // 무슨 맵을 생성하느냐에 대한 변수 
     Rigidbody2D rigid;
     Animator anim;
-    private int CountBreak,value = 0;
+    private int CountBreak, value = 0;
     TextAsset jsonAsset;
     PatternList patternList;
     int PatternRandomCode;
 
-    private int[] PatternCode = new int[] { 0, 3, 2 }; // 임시 패턴 코드 현재 0-> CCTV, 3 -> 휴식 , 2 -> 톱니바퀴입니다. 
-
     public class PatternList { public List<Define.PatternData> patterns; } // jsonManager 통하지않고 값 받기
-   
+
 
 
     public float Playersize_level;  // 크기 변수
@@ -49,7 +47,7 @@ public class PlayerMove : MonoBehaviour
          * Press하고 있을 때는 MousePress 함수가 호출 되고, PressEnd일 때는 MosuePressEnd함수가 호출 됩니다.
          * 이해 안 가시면 질문하세요
         */
-        Managers.Input.MouseAction -= MousePress; 
+        Managers.Input.MouseAction -= MousePress;
         Managers.Input.MouseAction += MousePress;
         Managers.Input.MouseAction -= MousePressEnd;
         Managers.Input.MouseAction += MousePressEnd;
@@ -75,7 +73,7 @@ public class PlayerMove : MonoBehaviour
     {
         //Player Move
         //if (!Input.GetMouseButton(0))
-        if(Managers.Game.currentState == GameManager.GameState.Playing)
+        if (Managers.Game.currentState == GameManager.GameState.Playing)
         {
             transform.position = transform.position + Vector3.up * player_speed * Time.deltaTime;
         }
@@ -99,10 +97,10 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "pattern")
         {
-            
+
             if (CountBreak == 0)
             {
-                PatternRandomCode = Random.Range(0,24);
+                PatternRandomCode = Random.Range(0, 24);
                 jsonAsset = Resources.Load<TextAsset>("Data/PatternDatas"); // jsonManager 안거치고 받기
                 patternList = JsonUtility.FromJson<PatternList>(jsonAsset.text);  // jsonManager 안거치고 받기
                 //데이터 받고 
@@ -112,7 +110,7 @@ public class PlayerMove : MonoBehaviour
                 newPattern_test.transform.position = new Vector3(0, patternY, 0);
                 CountBreak++;
             }
-            else if (CountBreak==1)
+            else if (CountBreak == 1)
             {
                 jsonAsset = Resources.Load<TextAsset>("Data/PatternDatas"); // jsonManager 안거치고 받기
                 patternList = JsonUtility.FromJson<PatternList>(jsonAsset.text);  // jsonManager 안거치고 받기
@@ -122,14 +120,14 @@ public class PlayerMove : MonoBehaviour
                 CountBreak++;
             }
 
-            else if (CountBreak==2)
+            else if (CountBreak == 2)
             {
                 jsonAsset = Resources.Load<TextAsset>("Data/PatternDatas"); // jsonManager 안거치고 받기
                 patternList = JsonUtility.FromJson<PatternList>(jsonAsset.text);  // jsonManager 안거치고 받기
                 value = patternList.patterns[PatternRandomCode].thirdObstacle;
                 GameObject newPattern_test = ObjectManager.MakeObj(value);
                 newPattern_test.transform.position = new Vector3(0, patternY, 0);
-                CountBreak=0;
+                CountBreak = 0;
             }
 
             GameObject newBackGround = BackGroundManager.MakeMap(MapCode);  //맵 코드를 받아서 맵 생성 
@@ -161,7 +159,7 @@ public class PlayerMove : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
     }
-    
+
     //GameOver
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -172,5 +170,15 @@ public class PlayerMove : MonoBehaviour
             Managers.Game.PlayerDied();
         }
 
+    }
+
+    public void MakeStartPattern()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject startPattern = BackGroundManager.MakeMap(2);
+            startPattern.transform.position = new Vector3(0, -3 + i * 6, 0);
+        }
+        patternY = 15;
     }
 }
