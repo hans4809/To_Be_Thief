@@ -28,6 +28,7 @@ public class GameManager
         currentState = GameState.End;
         Time.timeScale = 0;
         Managers.UI.ShowPopUpUI<UI_Died>();
+        Managers.Sound.Play("Sounds/SFX/GameOver");
     }
     //인게임 데이터 초기화 
     public void GameStart()
