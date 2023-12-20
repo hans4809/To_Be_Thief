@@ -13,7 +13,6 @@ public class GameScene : BaseScene
         SceneType = Define.Scene.GameScene;
         Managers.Game.player = FindObjectOfType<PlayerMove>();
         Managers.UI.ShowSceneUI<UI_GameScene>();
-        Managers.Sound.Play("Sounds/BGM/GameBGM", Define.Sound.BGM);
         Managers.Game.GameStart();
     }
     // Update is called once per frame
