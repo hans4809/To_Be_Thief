@@ -71,8 +71,6 @@ public class UI_ItemButton : UI_Base
             }
         }
         Managers.Game.itemSelected++;
-        Debug.Log(Managers.Data.currentLevel[itemIndex]);
-        Debug.Log(Managers.Data.currentStat[itemIndex]);
         Managers.UI.CloseAllPopUPUI();
         Time.timeScale = 1;
         Managers.Game.currentState = GameManager.GameState.Playing;

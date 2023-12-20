@@ -30,7 +30,7 @@ public class InputManager
             {
                 if (_pressed)
                 {
-                    MouseAction.Invoke(Define.MouseEvent.Click);
+                    //MouseAction.Invoke(Define.MouseEvent.Click);
                     MouseAction.Invoke(Define.MouseEvent.End);
                 }
                 _pressed = false;

@@ -27,14 +27,21 @@ public class GameManager
         }
         currentState = GameState.End;
         Time.timeScale = 0;
+        player.GetComponent<Collider2D>().isTrigger = false;
         Managers.UI.ShowPopUpUI<UI_Died>();
+        Managers.Sound._audioSources[(int)Define.Sound.BGM].Stop();
         Managers.Sound.Play("Sounds/SFX/GameOver");
     }
     //인게임 데이터 초기화 
     public void GameStart()
     {
+        BackGroundManager backGroundManager = GameObject.FindObjectOfType<BackGroundManager>();
+        ObjectManager objectManager = GameObject.FindObjectOfType<ObjectManager>();
+        backGroundManager.Clear();
+        objectManager.Clear();
         player.MakeStartPattern();
         Managers.UI.CloseAllPopUPUI();
+        player.GetComponent<Collider2D>().isTrigger = true;
         score = 0;
         if (player != null) { player.transform.localPosition = new Vector3(0, 0, 0); }
         for (int i = 0; i < 7; i++)
@@ -45,6 +52,7 @@ public class GameManager
         currentState = GameState.Playing;
         Time.timeScale = 1;
         itemSelected = 0;
+        Managers.Sound.Play("Sounds/BGM/GameBGM", Define.Sound.BGM);
     }
     //인게임 중 Update문으로 실행시킬 함수
     public void OnUpdate()

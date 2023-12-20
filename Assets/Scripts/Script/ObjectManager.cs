@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
@@ -7,39 +8,42 @@ public class ObjectManager : MonoBehaviour
 
     public GameObject[] Prefabs;
 
-    GameObject[] mapCCTV;
-    GameObject[] mapRock;
-    GameObject[] mapSpike;
-    GameObject[] Break;
+    List<GameObject> mapCCTV = new List<GameObject>();
+    List<GameObject> mapRock = new List<GameObject>();
+    List<GameObject> mapSpike = new List<GameObject>();
+    List<GameObject> Break = new List<GameObject>();
     void Awake()
     {
-        mapCCTV = new GameObject[5];
-        mapRock = new GameObject[5];
-        mapSpike = new GameObject[5];
-        Break = new GameObject[5];
         Generate();
     }
 
     void Generate()
     {
-        for(int i = 0; i<5; i++)
+        for(int i = 0; i < 5; i++)
         {
-            mapCCTV[i] = Instantiate(Prefabs[0],transform);
+            mapCCTV.Add(Instantiate(Prefabs[0],transform));
             mapCCTV[i].SetActive(false);
-            mapRock[i] = Instantiate(Prefabs[1],transform);
+            mapRock.Add(Instantiate(Prefabs[1],transform));
             mapRock[i].SetActive(false);
-            mapSpike[i] = Instantiate(Prefabs[2],transform);
+            mapSpike.Add(Instantiate(Prefabs[2], transform));
             mapSpike[i].SetActive(false);
-            Break[i]=Instantiate(Prefabs[3], transform);
+            Break.Add(Instantiate(Prefabs[3], transform));
             Break[i].SetActive(false);
         }
+    }
+    public void Clear()
+    {
+        foreach (GameObject obj in mapCCTV) { obj.SetActive(false); }
+        foreach (GameObject obj in mapRock) { obj.SetActive(false); }
+        foreach (GameObject obj in mapSpike) { obj.SetActive(false); }
+        foreach (GameObject obj in Break) { obj.SetActive(false); }
     }
 
     public GameObject MakeObj(int type)
     {
         if (type == 0)
         {
-            for (int i = 0; i<5; i++)
+            for (int i = 0; i<mapCCTV.Count; i++)
             {
                 if (!mapCCTV[i].activeSelf)
                 {
@@ -47,11 +51,13 @@ public class ObjectManager : MonoBehaviour
                     return mapCCTV[i];
                 }
             }
+            mapCCTV.Add(Instantiate(Prefabs[0], transform));
+            return mapCCTV.Last();
         }
 
         if (type == 1)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < mapRock.Count; i++)
             {
                 if (!mapRock[i].activeSelf)
                 {
@@ -59,11 +65,13 @@ public class ObjectManager : MonoBehaviour
                     return mapRock[i];
                 }
             }
+            mapRock.Add(Instantiate(Prefabs[1], transform));
+            return mapRock.Last();
         }
 
         if (type == 2)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < mapSpike.Count; i++)
             {
                 if (!mapSpike[i].activeSelf)
                 {
@@ -71,11 +79,13 @@ public class ObjectManager : MonoBehaviour
                     return mapSpike[i];
                 }
             }
+            mapSpike.Add(Instantiate(Prefabs[2], transform));
+            return mapSpike.Last();
         }
 
         if(type==3)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < Break.Count; i++)
             {
                 if (!Break[i].activeSelf)
                 {
@@ -83,6 +93,8 @@ public class ObjectManager : MonoBehaviour
                     return Break[i];
                 }
             }
+            Break.Add(Instantiate(Prefabs[3], transform));
+            return Break.Last();
         }
 
         return null;
