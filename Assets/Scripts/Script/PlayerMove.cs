@@ -233,5 +233,6 @@ public class PlayerMove : MonoBehaviour
             startPattern.transform.position = new Vector3(0, i * 12, 0);
         }
         patternY = 24;
+        objectY = 9;
     }                       
 }
