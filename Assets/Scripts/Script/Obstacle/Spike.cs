@@ -9,7 +9,6 @@ public class Spike : MonoBehaviour
     void Start()
     {
 
-        transform.localScale = new Vector3(0.05f,  0.1f, 3f);
     }
 
     void Update()

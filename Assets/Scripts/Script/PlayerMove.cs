@@ -19,10 +19,11 @@ public class PlayerMove : MonoBehaviour
     public class PatternList { public List<Define.PatternData> patterns; } // jsonManager 통하지않고 값 받기
 
 
-
-    public float Playersize_level;  // 크기 변수
-    int patternY = 15;
     public float player_speed;
+    public float Playersize_level;  // 크기 변수
+    int patternY = 24;
+    int objectY = 9;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -32,7 +33,7 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         Playersize_level = 1.3f;
-        player_speed = 3f;
+        player_speed = 1.5f;
         transform.localScale = new Vector3(Playersize_level, Playersize_level, 1f); // 크기 설정
         /* 
          * 원래 유정님이 하신 것도 잘하셨습니다. 그런데 그냥 플레이어에 마우스 입력을 받아버리면
@@ -79,15 +80,15 @@ public class PlayerMove : MonoBehaviour
     {
         if (evt != Define.MouseEvent.Press)
             return;
-        anim.SetBool("isWalking", false);
+        //anim.SetBool("isWalking", false);
         player_speed = 0.0f;
     }
     void MousePressEnd(Define.MouseEvent evt)
     {
         if (evt != Define.MouseEvent.End)
             return;
-        anim.SetBool("isWalking", true);
-        player_speed = 3f;//DataManager._instance.items[(int)Define.ItemType.Player_speed].level_1;
+        //anim.SetBool("isWalking", true);
+        player_speed = 1.5f;//DataManager._instance.items[(int)Define.ItemType.Player_speed].level_1;
     }
 
     //Make pattern
@@ -152,7 +153,7 @@ public class PlayerMove : MonoBehaviour
         GameObject[] Objects = GameObject.FindGameObjectsWithTag("Obstacle");
         for (int i = 0; i < Objects.Length; i++)
         {
-            if (gameObject.transform.position.y - Objects[i].transform.position.y > 15)
+            if (gameObject.transform.position.y - Objects[i].transform.position.y > 5)
             {
                 Objects[i].SetActive(false);
             }
@@ -166,13 +167,12 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "ObstacleHitBox")
         {
-            patternY = 15;
-            Debug.Log("�׾����ϴ�.");
+            patternY = 24;
+            Debug.Log("Gameover");
             Managers.Game.PlayerDied();
         }
-        else if (collision.gameObject.tag == "pattern")
+        else if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Obstacle init")
         {
-
             if (CountBreak == 0)
             {
                 PatternRandomCode = Random.Range(0, 24);
@@ -181,9 +181,10 @@ public class PlayerMove : MonoBehaviour
                 ////데이터 받고 
                 //value = patternList.patterns[PatternRandomCode].firstObstacle;
                 //value = Managers.Data.patternDatas.patterns[PatternRandomCode].firstObstacle;
-                Debug.Log(value);
+                Debug.Log(PatternRandomCode);
                 GameObject newPattern_test = ObjectManager.MakeObj(value);
-                newPattern_test.transform.position = new Vector3(0, patternY, 0);
+                newPattern_test.transform.position = new Vector3(0, objectY, 0);
+                Debug.Log(value);
                 CountBreak++;
             }
             else if (CountBreak == 1)
@@ -193,7 +194,8 @@ public class PlayerMove : MonoBehaviour
                 //value = patternList.patterns[PatternRandomCode].secondObstacle;
                 value = Managers.Data.patternDatas.patterns[PatternRandomCode].secondObstacle;
                 GameObject newPattern_test = ObjectManager.MakeObj(value);
-                newPattern_test.transform.position = new Vector3(0, patternY, 0);
+                newPattern_test.transform.position = new Vector3(0, objectY, 0);
+                Debug.Log(value);
                 CountBreak++;
             }
 
@@ -204,25 +206,32 @@ public class PlayerMove : MonoBehaviour
                 //value = patternList.patterns[PatternRandomCode].thirdObstacle;
                 value = Managers.Data.patternDatas.patterns[PatternRandomCode].thirdObstacle;
                 GameObject newPattern_test = ObjectManager.MakeObj(value);
-                newPattern_test.transform.position = new Vector3(0, patternY, 0);
+                newPattern_test.transform.position = new Vector3(0, objectY, 0);
+                Debug.Log(value);
                 CountBreak = 0;
             }
-
+            
+            //GameObject newBackGround = BackGroundManager.MakeMap(MapCode);  //맵 코드를 받아서 맵 생성 
+            //newBackGround.transform.position = new Vector3(0, patternY, 0);
+              
+            objectY += 2;
+        }
+        else if(collision.gameObject.tag == "pattern")
+        {
             GameObject newBackGround = BackGroundManager.MakeMap(MapCode);  //맵 코드를 받아서 맵 생성 
             newBackGround.transform.position = new Vector3(0, patternY, 0);
-
-            patternY += 6;
+            patternY += 12;
         }
 
     }
 
     public void MakeStartPattern()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         {
             GameObject startPattern = BackGroundManager.MakeMap(0);
-            startPattern.transform.position = new Vector3(0, -3 + i * 6, 0);
+            startPattern.transform.position = new Vector3(0, i * 12, 0);
         }
-        patternY = 15;
-    }
+        patternY = 24;
+    }                       
 }

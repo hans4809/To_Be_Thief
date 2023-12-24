@@ -19,7 +19,7 @@ public class ObjectManager : MonoBehaviour
 
     void Generate()
     {
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 8; i++)
         {
             mapCCTV.Add(Instantiate(Prefabs[0],transform));
             mapCCTV[i].SetActive(false);
@@ -41,7 +41,7 @@ public class ObjectManager : MonoBehaviour
 
     public GameObject MakeObj(int type)
     {
-        if (type == 0)
+        if (type == 3)
         {
             for (int i = 0; i<mapCCTV.Count; i++)
             {
@@ -83,7 +83,7 @@ public class ObjectManager : MonoBehaviour
             return mapSpike.Last();
         }
 
-        if(type==3)
+        if(type==0)
         {
             for (int i = 0; i < Break.Count; i++)
             {

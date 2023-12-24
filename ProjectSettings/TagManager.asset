@@ -9,6 +9,7 @@ TagManager:
   - Border
   - BackGround
   - ObstacleHitBox
+  - Obstacle init
   layers:
   - Default
   - TransparentFX
