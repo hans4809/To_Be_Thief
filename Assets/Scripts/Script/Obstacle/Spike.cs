@@ -6,6 +6,11 @@ public class Spike : MonoBehaviour
 {
     public float SpikeSpawn = 4;
     float timer = 0.0f;
+    void Start()
+    {
+
+        transform.localScale = new Vector3(0.05f,  0.1f, 3f);
+    }
 
     void Update()
     {

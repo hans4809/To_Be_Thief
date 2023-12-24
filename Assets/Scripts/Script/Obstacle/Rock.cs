@@ -13,8 +13,8 @@ public class Rock : MonoBehaviour
 
     void Start()
     {
-        Rocksize_level = 0.75f; //  값의 변화를 조절 
-        transform.localScale = new Vector3(Rocksize_level, Rocksize_level, 3f); // 크기 설정
+        Rocksize_level = 0.1f; //  값의 변화를 조절 , Sprite에 이미지 적용으로 값 조절
+        transform.localScale = new Vector3(Rocksize_level, Rocksize_level*1.5f, 3f); // 크기 설정
 
         RockSpeed_level = 5;
         originx = transform.position.x;

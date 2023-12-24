@@ -13,7 +13,7 @@ public class TitleScene : BaseScene
         base.Init();
         SceneType = Define.Scene.TitleScene;
         Managers.UI.ShowSceneUI<UI_TitleScene>();
-        Managers.Sound.Play("Sounds/BGM/MainBGM_Edit", Define.Sound.BGM);
+        Managers.Sound.Play("Sounds/BGM/MainTitle", Define.Sound.BGM);
     }
 
     // Start is called before the first frame update

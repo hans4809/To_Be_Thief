@@ -52,7 +52,7 @@ public class GameManager
         currentState = GameState.Playing;
         Time.timeScale = 1;
         itemSelected = 0;
-        Managers.Sound.Play("Sounds/BGM/GameBGM", Define.Sound.BGM);
+        Managers.Sound.Play("Sounds/BGM/InGameBGM", Define.Sound.BGM);
     }
     //인게임 중 Update문으로 실행시킬 함수
     public void OnUpdate()
@@ -67,6 +67,7 @@ public class GameManager
                 {
                     if ((score + 1 > itemSelected * 10 && itemSelected != 0) || itemSelected == 0)
                     {
+                        Managers.Sound.Play("Sounds/SFX/OpenBox");
                         Managers.UI.ShowPopUpUI<UI_SelectItem>();
                         Time.timeScale = 0;
                         currentState = GameState.Pause;

@@ -31,9 +31,6 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
-
-
-
         Playersize_level = 1.3f;
         player_speed = 3f;
         transform.localScale = new Vector3(Playersize_level, Playersize_level, 1f); // 크기 설정
@@ -223,7 +220,7 @@ public class PlayerMove : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            GameObject startPattern = BackGroundManager.MakeMap(2);
+            GameObject startPattern = BackGroundManager.MakeMap(0);
             startPattern.transform.position = new Vector3(0, -3 + i * 6, 0);
         }
         patternY = 15;
