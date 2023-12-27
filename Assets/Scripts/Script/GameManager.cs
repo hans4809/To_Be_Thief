@@ -63,14 +63,24 @@ public class GameManager
             score = (int)player.transform.position.y / 2;
             if (CanPopUpUI_ItemButton())
             {
-                if (score == 5 || (score % 10 == 0 && score > 5))
+                if (score == 50 || ((score-50) % 30 == 0))
                 {
-                    if ((score + 1 > itemSelected * 10 && itemSelected != 0) || itemSelected == 0)
+                    if(itemSelected == 0)
                     {
                         Managers.Sound.Play("Sounds/SFX/OpenBox");
                         Managers.UI.ShowPopUpUI<UI_SelectItem>();
                         Time.timeScale = 0;
                         currentState = GameState.Pause;
+                    }
+                    else
+                    {
+                        if((score - 50) + 1 > itemSelected * 30)
+                        {
+                            Managers.Sound.Play("Sounds/SFX/OpenBox");
+                            Managers.UI.ShowPopUpUI<UI_SelectItem>();
+                            Time.timeScale = 0;
+                            currentState = GameState.Pause;
+                        }
                     }
                 }
             }

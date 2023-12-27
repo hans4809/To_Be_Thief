@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Compilation;
 using UnityEngine;
 
 public class MainScene : BaseScene
@@ -17,6 +18,10 @@ public class MainScene : BaseScene
         base.Init();
         SceneType = Define.Scene.MainScene;
         Managers.UI.ShowSceneUI<UI_Main>();
+        if (!Managers.Sound._audioSources[(int)Define.Sound.BGM].isPlaying)
+        {
+            Managers.Sound.Play("Sounds/BGM/MainTitle");
+        }
     }
     // Update is called once per frame
     void Update()

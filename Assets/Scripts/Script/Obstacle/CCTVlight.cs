@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class CCTVlight : MonoBehaviour
 {
-    GameObject light = null;
+    public GameObject cctv_light;
     public float CCTVDuration = 1;
     float timer = 0.0f;
     void Start()
     {
-        light = transform.GetChild(0).gameObject; // light 오브젝트 접근
         int flag = Random.Range(0, 2);
         if (flag == 1)
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1); //랜덤하게 오브젝트 좌우반전 시키기
@@ -19,11 +18,11 @@ public class CCTVlight : MonoBehaviour
     {
         timer += Time.deltaTime;
         if (timer >= 6)
-        { 
-            light.SetActive(true);
+        {
+            cctv_light.SetActive(true);
             if (timer >= CCTVDuration + 6)
             {
-                light.SetActive(false);
+                cctv_light.SetActive(false);
                 timer = 0;
             }
         }

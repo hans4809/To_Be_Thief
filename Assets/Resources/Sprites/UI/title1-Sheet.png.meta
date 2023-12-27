@@ -1,34 +1,37 @@
 fileFormatVersion: 2
-guid: 1f0d64cb9a1f00244816187b9867a0c3
+guid: 7d5da274468bf184ab2f84d1c1c6e382
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8750902593450024854
-    second: charaterbacksitting-Sheet_0
+      213: 7332684394359301439
+    second: title1-Sheet_0
   - first:
-      213: -2770732402138681235
-    second: charaterbacksitting-Sheet_1
+      213: -8848806588520469556
+    second: title1-Sheet_1
   - first:
-      213: -722407142069659431
-    second: charaterbacksitting-Sheet_2
+      213: 9075673919320965883
+    second: title1-Sheet_2
   - first:
-      213: 7285913756731825650
-    second: charaterbacksitting-Sheet_3
+      213: -2809742848507052754
+    second: title1-Sheet_3
   - first:
-      213: 6983884901125213906
-    second: charaterbacksitting-Sheet_4
+      213: 2788220334684757348
+    second: title1-Sheet_4
   - first:
-      213: 6626908742939161141
-    second: charaterbacksitting-Sheet_5
+      213: -4842310264607024692
+    second: title1-Sheet_5
   - first:
-      213: 2300285553464776679
-    second: charaterbacksitting-Sheet_6
+      213: 84127347881632173
+    second: title1-Sheet_6
   - first:
-      213: 1760285291534455075
-    second: charaterbacksitting-Sheet_7
+      213: -5361905578400432296
+    second: title1-Sheet_7
   - first:
-      213: 5606552387365829516
-    second: charaterbacksitting-Sheet_8
+      213: 6885281280225295521
+    second: title1-Sheet_8
+  - first:
+      213: -3199719066689937228
+    second: title1-Sheet_9
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -131,13 +134,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: charaterbacksitting-Sheet_0
+      name: title1-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 800
-        height: 1168
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +148,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a60ed5d947c8e8680800000000000000
-      internalID: -8750902593450024854
+      spriteID: f3526df3b9de2c560800000000000000
+      internalID: 7332684394359301439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaterbacksitting-Sheet_1
+      name: title1-Sheet_1
       rect:
         serializedVersion: 2
-        x: 800
+        x: 512
         y: 0
-        width: 800
-        height: 1168
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d60fbda6f816c89d0800000000000000
-      internalID: -2770732402138681235
+      spriteID: ccbe91d6a49b23580800000000000000
+      internalID: -8848806588520469556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaterbacksitting-Sheet_2
+      name: title1-Sheet_2
       rect:
         serializedVersion: 2
-        x: 1600
+        x: 1024
         y: 0
-        width: 800
-        height: 1168
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +190,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d89bb1288e79f5f0800000000000000
-      internalID: -722407142069659431
+      spriteID: bf2476a385543fd70800000000000000
+      internalID: 9075673919320965883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaterbacksitting-Sheet_3
+      name: title1-Sheet_3
       rect:
         serializedVersion: 2
-        x: 2400
+        x: 1536
         y: 0
-        width: 800
-        height: 1168
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +211,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fdd12695f3cc1560800000000000000
-      internalID: 7285913756731825650
+      spriteID: e2dfa8414c9c109d0800000000000000
+      internalID: -2809742848507052754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaterbacksitting-Sheet_4
+      name: title1-Sheet_4
       rect:
         serializedVersion: 2
-        x: 3200
+        x: 2048
         y: 0
-        width: 800
-        height: 1168
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +232,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2de48cbb05ebbe060800000000000000
-      internalID: 6983884901125213906
+      spriteID: 46dd76c2f9fb1b620800000000000000
+      internalID: 2788220334684757348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaterbacksitting-Sheet_5
+      name: title1-Sheet_5
       rect:
         serializedVersion: 2
-        x: 4000
+        x: 2560
         y: 0
-        width: 800
-        height: 1168
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +253,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 532b1dd046287fb50800000000000000
-      internalID: 6626908742939161141
+      spriteID: cc9ded15878acccb0800000000000000
+      internalID: -4842310264607024692
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaterbacksitting-Sheet_6
+      name: title1-Sheet_6
       rect:
         serializedVersion: 2
-        x: 4800
+        x: 3072
         y: 0
-        width: 800
-        height: 1168
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +274,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e71b3006814cef10800000000000000
-      internalID: 2300285553464776679
+      spriteID: da1616e8061ea2100800000000000000
+      internalID: 84127347881632173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaterbacksitting-Sheet_7
+      name: title1-Sheet_7
       rect:
         serializedVersion: 2
-        x: 5600
+        x: 3584
         y: 0
-        width: 800
-        height: 1168
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,20 +295,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3219141752acd6810800000000000000
-      internalID: 1760285291534455075
+      spriteID: 85fb148f84fa695b0800000000000000
+      internalID: -5361905578400432296
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaterbacksitting-Sheet_8
+      name: title1-Sheet_8
       rect:
         serializedVersion: 2
-        x: 6400
+        x: 4096
         y: 0
-        width: 800
-        height: 1168
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,8 +316,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8bfe8701b97ecd40800000000000000
-      internalID: 5606552387365829516
+      spriteID: 1acb97638de6d8f50800000000000000
+      internalID: 6885281280225295521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title1-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 4608
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b0e6e036705893d0800000000000000
+      internalID: -3199719066689937228
       vertices: []
       indices: 
       edges: []

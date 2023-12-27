@@ -1,34 +1,25 @@
 fileFormatVersion: 2
-guid: 1f0d64cb9a1f00244816187b9867a0c3
+guid: d8ac6596591b2b749a4ec9b81a41379e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8750902593450024854
-    second: charaterbacksitting-Sheet_0
+      213: -875915170966523763
+    second: golem2-Sheet_0
   - first:
-      213: -2770732402138681235
-    second: charaterbacksitting-Sheet_1
+      213: 520782656833737223
+    second: golem2-Sheet_1
   - first:
-      213: -722407142069659431
-    second: charaterbacksitting-Sheet_2
+      213: 7004209572024082244
+    second: golem2-Sheet_2
   - first:
-      213: 7285913756731825650
-    second: charaterbacksitting-Sheet_3
+      213: -5873095758107000962
+    second: golem2-Sheet_3
   - first:
-      213: 6983884901125213906
-    second: charaterbacksitting-Sheet_4
+      213: 2955553671099631307
+    second: golem2-Sheet_4
   - first:
-      213: 6626908742939161141
-    second: charaterbacksitting-Sheet_5
-  - first:
-      213: 2300285553464776679
-    second: charaterbacksitting-Sheet_6
-  - first:
-      213: 1760285291534455075
-    second: charaterbacksitting-Sheet_7
-  - first:
-      213: 5606552387365829516
-    second: charaterbacksitting-Sheet_8
+      213: -4123570279296713787
+    second: golem2-Sheet_5
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -131,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: charaterbacksitting-Sheet_0
+      name: golem2-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 800
-        height: 1168
+        width: 160
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +136,104 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a60ed5d947c8e8680800000000000000
-      internalID: -8750902593450024854
+      spriteID: d803a25facf18d3f0800000000000000
+      internalID: -875915170966523763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaterbacksitting-Sheet_1
+      name: golem2-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 160
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70252c131113a3700800000000000000
+      internalID: 520782656833737223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem2-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 160
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44fd2e0fe73f33160800000000000000
+      internalID: 7004209572024082244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem2-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 160
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7fbd2666829e7ea0800000000000000
+      internalID: -5873095758107000962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem2-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 160
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc6ce78976c340920800000000000000
+      internalID: 2955553671099631307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem2-Sheet_5
       rect:
         serializedVersion: 2
         x: 800
         y: 0
-        width: 800
-        height: 1168
+        width: 160
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,155 +241,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d60fbda6f816c89d0800000000000000
-      internalID: -2770732402138681235
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: charaterbacksitting-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 1600
-        y: 0
-        width: 800
-        height: 1168
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9d89bb1288e79f5f0800000000000000
-      internalID: -722407142069659431
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: charaterbacksitting-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 2400
-        y: 0
-        width: 800
-        height: 1168
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2fdd12695f3cc1560800000000000000
-      internalID: 7285913756731825650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: charaterbacksitting-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 3200
-        y: 0
-        width: 800
-        height: 1168
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2de48cbb05ebbe060800000000000000
-      internalID: 6983884901125213906
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: charaterbacksitting-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 4000
-        y: 0
-        width: 800
-        height: 1168
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 532b1dd046287fb50800000000000000
-      internalID: 6626908742939161141
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: charaterbacksitting-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 4800
-        y: 0
-        width: 800
-        height: 1168
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e71b3006814cef10800000000000000
-      internalID: 2300285553464776679
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: charaterbacksitting-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 5600
-        y: 0
-        width: 800
-        height: 1168
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3219141752acd6810800000000000000
-      internalID: 1760285291534455075
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: charaterbacksitting-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 6400
-        y: 0
-        width: 800
-        height: 1168
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c8bfe8701b97ecd40800000000000000
-      internalID: 5606552387365829516
+      spriteID: 5cb3928bda226c6c0800000000000000
+      internalID: -4123570279296713787
       vertices: []
       indices: 
       edges: []
