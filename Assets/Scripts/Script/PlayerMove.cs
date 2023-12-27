@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour
     {
         Playersize_level = 1.3f;
         player_speed = 1.5f;
-        transform.localScale = new Vector3(Playersize_level, Playersize_level, 1f); // 크기 설정
+        //transform.localScale = new Vector3(Playersize_level, Playersize_level, 1f); // 크기 설정
         /* 
          * 원래 유정님이 하신 것도 잘하셨습니다. 그런데 그냥 플레이어에 마우스 입력을 받아버리면
          * UI 클릭 할 때도 캐릭터 오브젝트가 있으면 마우스 입력이 되어버리는 문제가 발생할 수 있습니다.
