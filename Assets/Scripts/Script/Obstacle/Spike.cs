@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Spike : MonoBehaviour
 {
+    Animator anim;
+    BoxCollider2D box;
     public float SpikeSpawn = 4;
     float timer = 0.0f;
     void Start()
     {
-
+        anim = GetComponent<Animator>();
+        box = GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -16,12 +19,17 @@ public class Spike : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= SpikeSpawn)
         {
-            gameObject.SetActive(true);
+            anim.SetBool("SpikeUp", true);
+            box.enabled = true;
             if (timer >= SpikeSpawn + 1)
             {
-                gameObject.SetActive(false);
                 timer = 0;
             }
+        }
+        else if (timer < SpikeSpawn)
+        {
+            box.enabled = false;
+            anim.SetBool("SpikeUp", false);
         }
     }
 }
