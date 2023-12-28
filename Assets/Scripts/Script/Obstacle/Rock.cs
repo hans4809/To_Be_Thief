@@ -31,6 +31,7 @@ public class Rock : MonoBehaviour
         {
             RockSpeed_level = -RockSpeed_level;
             originx = -originx;
+            transform.position = new Vector3(originx, transform.position.y, 0);
         }
 
     }
