@@ -20,7 +20,8 @@ public class Spike : MonoBehaviour
         if (timer >= SpikeSpawn)
         {
             anim.SetBool("SpikeUp", true);
-            box.enabled = true;
+            if(anim.GetCurrentAnimatorStateInfo(0).IsName("SpikeUp") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+                box.enabled = true;
             if (timer >= SpikeSpawn + 1)
             {
                 timer = 0;
