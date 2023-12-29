@@ -132,4 +132,12 @@ public class SoundManager
         }
         _audioClips.Clear();
     }
+    public void Audiorate(int volume)
+    {
+        AudioSource audioSource1 = _audioSources[(int)Define.Sound.BGM];
+        audioSource1.pitch = volume;
+        AudioSource audioSource2 = _audioSources[(int)Define.Sound.SFX];
+        audioSource2.pitch = volume;
+
+    }
 }

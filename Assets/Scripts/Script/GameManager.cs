@@ -8,6 +8,8 @@ public class GameManager
     public int score = 0;
     public PlayerMove player;
     public int itemSelected = 0;
+    bool Stage_in2 = false;
+    bool Stage_in3 = false;
     //게임 상태를 나눠서 상태에 따라 스크립트들이 돌아가게 함
     public enum GameState
     {
@@ -61,6 +63,24 @@ public class GameManager
         if (currentState == GameState.Playing)
         {
             score = (int)player.transform.position.y / 2;
+            
+            // 60점 넘으면 2페이즈로 넘어가기.
+            if(score == 60 &&Stage_in2 ==false)
+            {
+                player.MapCode = 1;
+                Managers.Sound.Play("Sounds/BGM/Phase_2", Define.Sound.BGM);
+                Stage_in2 = true;
+            }
+
+            // 100점 넘으면 3페이즈로 넘어가기.
+            if(score == 100 &&Stage_in3==false)
+            {
+                player.MapCode = 2;
+                Managers.Sound.Play("Sounds/BGM/Phase_3",Define.Sound.BGM);
+                Stage_in3 = true;
+            }
+
+
             if (CanPopUpUI_ItemButton())
             {
                 if (score == 50 || ((score-50) % 30 == 0))
