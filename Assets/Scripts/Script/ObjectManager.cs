@@ -38,7 +38,12 @@ public class ObjectManager : MonoBehaviour
         foreach (GameObject obj in mapSpike) { obj.SetActive(false); }
         foreach (GameObject obj in Break) { obj.SetActive(false); }
     }
-
+    public void updateStat()
+    {
+        foreach (GameObject obj in mapCCTV) { obj.GetComponent<CCTVlight>().UpdateStat(); }
+        foreach (GameObject obj in mapRock) { obj.GetComponent<Rock>().UpdateStat(); }
+        foreach (GameObject obj in mapSpike) { obj.GetComponent<Spike>().UpdateStat(); }
+    }
     public GameObject MakeObj(int type)
     {
         if (type == 3)

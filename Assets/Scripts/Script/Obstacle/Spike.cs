@@ -6,12 +6,13 @@ public class Spike : MonoBehaviour
 {
     Animator anim;
     BoxCollider2D box;
-    public float SpikeSpawn = 4;
+    public float SpikeSpawn;
     float timer = 0.0f;
     void Start()
     {
         anim = GetComponent<Animator>();
         box = GetComponent<BoxCollider2D>();
+        SpikeSpawn = Managers.Data.currentStat[3];
     }
 
     void Update()
@@ -32,5 +33,9 @@ public class Spike : MonoBehaviour
             box.enabled = false;
             anim.SetBool("SpikeUp", false);
         }
+    }
+    public void UpdateStat()
+    {
+        SpikeSpawn = Managers.Data.currentStat[3];
     }
 }

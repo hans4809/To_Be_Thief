@@ -32,8 +32,8 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
-        Playersize_level = 1.3f;
-        player_speed = 3f;
+        Playersize_level = Managers.Data.currentStat[1];
+        player_speed = Managers.Data.currentStat[0];
         //transform.localScale = new Vector3(Playersize_level, Playersize_level, 1f); // 크기 설정
         /* 
          * 원래 유정님이 하신 것도 잘하셨습니다. 그런데 그냥 플레이어에 마우스 입력을 받아버리면
@@ -89,7 +89,7 @@ public class PlayerMove : MonoBehaviour
         if (evt != Define.MouseEvent.End)
             return;
         //anim.SetBool("isWalking", true);
-        player_speed = 3f;//DataManager._instance.items[(int)Define.ItemType.Player_speed].level_1;
+        player_speed = Managers.Data.currentStat[0];//DataManager._instance.items[(int)Define.ItemType.Player_speed].level_1;
     }
 
     //Make pattern
@@ -181,7 +181,7 @@ public class PlayerMove : MonoBehaviour
                 //patternList = JsonUtility.FromJson<PatternList>(jsonAsset.text);  // jsonManager 안거치고 받기
                 ////데이터 받고 
                 //value = patternList.patterns[PatternRandomCode].firstObstacle;
-                //value = Managers.Data.patternDatas.patterns[PatternRandomCode].firstObstacle;
+                value = Managers.Data.patternDatas.patterns[PatternRandomCode].firstObstacle;
                 Debug.Log(PatternRandomCode);
                 GameObject newPattern_test = ObjectManager.MakeObj(value);
                 newPattern_test.transform.position = new Vector3(0, objectY, 0);

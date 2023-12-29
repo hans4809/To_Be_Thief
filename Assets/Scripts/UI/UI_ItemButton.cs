@@ -8,6 +8,8 @@ public class UI_ItemButton : UI_Base
 {
     public int itemIndex;
     public bool isDebuff;
+    public ObjectManager objectManager;
+    public PlayerMove player;
     private Define.ItemKey itemKey;
     public enum GameObjects
     {
@@ -22,6 +24,8 @@ public class UI_ItemButton : UI_Base
 
     public override void Init()
     {
+        objectManager = FindObjectOfType<ObjectManager>();
+        player = objectManager.GetComponent<PlayerMove>();
         if (isDebuff)
         {
             itemKey = new Define.ItemKey(itemIndex, Managers.Data.currentLevel[itemIndex] + 1, isDebuff);
@@ -71,6 +75,7 @@ public class UI_ItemButton : UI_Base
             }
         }
         Managers.Game.itemSelected++;
+        objectManager.updateStat();
         Managers.UI.CloseAllPopUPUI();
         Time.timeScale = 1;
         Managers.Game.currentState = GameManager.GameState.Playing;
