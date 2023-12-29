@@ -34,7 +34,7 @@ public class Spike : MonoBehaviour
             anim.SetBool("SpikeUp", false);
         }
     }
-    public void UpdateStat()
+    private void OnEnable()
     {
         SpikeSpawn = Managers.Data.currentStat[3];
     }

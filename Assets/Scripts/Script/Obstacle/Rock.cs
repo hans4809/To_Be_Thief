@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 
 public class Rock : MonoBehaviour
@@ -10,31 +11,36 @@ public class Rock : MonoBehaviour
 
     float originx;
     float timer;
+    float rotationTime;
 
     int isReturn;
     int isFlip;
 
+    Vector3 rotation;
+    private void Awake()
+    {
+        originx = transform.position.x;
+    }
     void Start()
     {
         Rocksize_level = Managers.Data.currentStat[6]; //  값의 변화를 조절 , Sprite에 이미지 적용으로 값 조절
         RockSpeed_level = Managers.Data.currentStat[5];
-        originx = transform.position.x;
         Rockspawn_level = Managers.Data.currentStat[4];
         timer = 0.0f;
-
+        rotationTime = 0.0f;
         isFlip = Random.Range(0, 2);
         isReturn = Random.Range(0, 2);
 
         if (isFlip == 1) // isFlip 1이면 오->왼
         {
             RockSpeed_level = -RockSpeed_level;
-            originx = -originx;
-            transform.position = new Vector3(originx, transform.position.y, 0);
+            transform.position = new Vector3(-originx, transform.position.y, 0);
         }
     }
     void Update()
     {
         timer += Time.deltaTime;
+        rotationTime += Time.deltaTime;
     }
 
     void FixedUpdate() 
@@ -42,6 +48,8 @@ public class Rock : MonoBehaviour
         if(timer > Rockspawn_level) //스폰시간 이후 움직임
         {
             transform.position = transform.position + Vector3.right * RockSpeed_level * Time.deltaTime;
+            rotation = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0, 0, -359), rotationTime);
+            transform.localEulerAngles = rotation;
         }
     }
 
@@ -59,7 +67,7 @@ public class Rock : MonoBehaviour
         {
             transform.position = new Vector3(originx, transform.position.y, 0); 
             timer = 0; //화면 밖으로 나가면 timer 초기화
-            
+            rotationTime = 0;
             if(isReturn == 1)
             {
                 RockSpeed_level = -RockSpeed_level;
@@ -67,10 +75,21 @@ public class Rock : MonoBehaviour
         }
         
     }
-    public void UpdateStat()
+    private void OnEnable()
     {
-        Rocksize_level = Managers.Data.currentStat[6];
-        RockSpeed_level = Managers.Data.currentStat[5];
         Rockspawn_level = Managers.Data.currentStat[4];
+        RockSpeed_level = Managers.Data.currentStat[5];
+        Rocksize_level = Managers.Data.currentStat[6];
+        transform.localScale = new Vector3(Rocksize_level, Rocksize_level * 3.5f, 1);
+        if (isFlip == 1) // isFlip 1이면 오->왼
+        {
+            RockSpeed_level = -RockSpeed_level;
+            transform.position = new Vector3(-originx, transform.position.y, 0);
+        }
+        else
+        {
+            transform.position = new Vector3(originx, transform.position.y, 0);
+        }
     }
+
 }

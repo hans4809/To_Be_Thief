@@ -15,7 +15,9 @@ public class PlayerMove : MonoBehaviour
     TextAsset jsonAsset;
     PatternList patternList;
     int PatternRandomCode;
-
+    public GameObject mainCamera;
+    public GameObject camera2;
+    public GameObject camera3;
     public class PatternList { public List<Define.PatternData> patterns; } // jsonManager 통하지않고 값 받기
 
 
@@ -29,8 +31,7 @@ public class PlayerMove : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
-
-    private void Start()
+    public void Init()
     {
         Playersize_level = Managers.Data.currentStat[1];
         player_speed = Managers.Data.currentStat[0];
@@ -49,6 +50,10 @@ public class PlayerMove : MonoBehaviour
         Managers.Input.MouseAction += MousePress;
         Managers.Input.MouseAction -= MousePressEnd;
         Managers.Input.MouseAction += MousePressEnd;
+    }
+    private void Start()
+    {
+        Init();
     }
 
     private void Update()
@@ -225,7 +230,58 @@ public class PlayerMove : MonoBehaviour
         }
 
     }
+    public void UpdateStat()
+    {
+        player_speed = Managers.Data.currentStat[0];
+        Playersize_level = Managers.Data.currentStat[1];
+        transform.localScale = new Vector3(Playersize_level, Playersize_level, 1);
+        switch (Playersize_level)
+        {
+            case 0.75f:
+                if (!mainCamera.activeInHierarchy)
+                {
+                    mainCamera.SetActive(true);
+                }
+                if (camera2.activeInHierarchy)
+                {
+                    camera2.SetActive(false);
+                }
+                if (camera3.activeInHierarchy)
+                {
+                    camera3.SetActive(false);
+                }
+                break;
+            case 1:
+                if (mainCamera.activeInHierarchy)
+                {
+                    mainCamera.SetActive(false);
+                }
+                if (!camera2.activeInHierarchy)
+                {
+                    camera2.SetActive(true);
+                }
+                if (camera3.activeInHierarchy)
+                {
+                    camera3.SetActive(false);
+                }
+                break;
+            case 1.25f:
+                if (mainCamera.activeInHierarchy)
+                {
+                    mainCamera.SetActive(false);
+                }
+                if (camera2.activeInHierarchy)
+                {
+                    camera2.SetActive(false);
+                }
+                if (!camera3.activeInHierarchy)
+                {
+                    camera3.SetActive(true);
+                }
+                break;
 
+        }
+    }
     public void MakeStartPattern()
     {
         for (int i = 0; i < 2; i++)

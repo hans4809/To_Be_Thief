@@ -28,7 +28,7 @@ public class CCTVlight : MonoBehaviour
             }
         }
     }
-    public void UpdateStat()
+    private void OnEnable()
     {
         CCTVDuration = Managers.Data.currentStat[2];
     }

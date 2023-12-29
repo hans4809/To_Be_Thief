@@ -41,6 +41,7 @@ public class GameManager
         ObjectManager objectManager = GameObject.FindObjectOfType<ObjectManager>();
         backGroundManager.Clear();
         objectManager.Clear();
+        player.Init();
         player.MakeStartPattern();
         Managers.UI.CloseAllPopUPUI();
         player.GetComponent<Collider2D>().isTrigger = true;
@@ -83,25 +84,27 @@ public class GameManager
 
             if (CanPopUpUI_ItemButton())
             {
-                if (score == 50 || ((score-50) % 30 == 0))
+                if (score == 5 || (score % 10 == 0 && score > 5))
+                //if (score == 50 || ((score-50) % 30 == 0))
                 {
-                    if(itemSelected == 0)
+                    if ((score + 1 > itemSelected * 10 && itemSelected != 0) || itemSelected == 0)
+                    //if(itemSelected == 0)
                     {
                         Managers.Sound.Play("Sounds/SFX/OpenBox");
                         Managers.UI.ShowPopUpUI<UI_SelectItem>();
                         Time.timeScale = 0;
                         currentState = GameState.Pause;
                     }
-                    else
-                    {
-                        if((score - 50) + 1 > itemSelected * 30)
-                        {
-                            Managers.Sound.Play("Sounds/SFX/OpenBox");
-                            Managers.UI.ShowPopUpUI<UI_SelectItem>();
-                            Time.timeScale = 0;
-                            currentState = GameState.Pause;
-                        }
-                    }
+                    //else
+                    //{
+                    //    if((score - 50) + 1 > itemSelected * 30)
+                    //    {
+                    //        Managers.Sound.Play("Sounds/SFX/OpenBox");
+                    //        Managers.UI.ShowPopUpUI<UI_SelectItem>();
+                    //        Time.timeScale = 0;
+                    //        currentState = GameState.Pause;
+                    //    }
+                    //}
                 }
             }
         }
