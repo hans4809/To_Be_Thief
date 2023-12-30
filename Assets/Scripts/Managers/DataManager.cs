@@ -10,4 +10,5 @@ public class DataManager
     public List<Define.ScoreData> scoreDatas = new List<Define.ScoreData>();
     public Define.WholeGameData gameData;
     public Define.PatternDatas patternDatas;
+    public Define.VolumeData volumeData = new Define.VolumeData();
 }

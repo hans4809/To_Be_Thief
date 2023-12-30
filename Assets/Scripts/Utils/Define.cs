@@ -48,11 +48,24 @@ public class Define
         public string player_ID;
         public int maxScore;
     }
+    public class VolumeData
+    {
+        public float masterVolume;
+        public float bgmVolume;
+        public float sfxVolume;
+        public VolumeData()
+        {
+            masterVolume = 0.7f;
+            bgmVolume = 0.7f;
+            sfxVolume = 0.7f;
+        }
+    }
     [System.Serializable]
     public class WholeGameData
     {
         public bool firstPlay;
         public int maxScore;
+
         public WholeGameData()
         {
             firstPlay = false;
