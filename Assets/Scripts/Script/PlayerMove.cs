@@ -54,6 +54,7 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         Init();
+        anim.SetBool("isWalking", true);
     }
 
     private void Update()
@@ -85,7 +86,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (evt != Define.MouseEvent.Press)
             return;
-        //anim.SetBool("isWalking", false);
+        anim.SetBool("isWalking", false);
         player_speed = 0.0f;
      
     }
@@ -93,7 +94,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (evt != Define.MouseEvent.End)
             return;
-        //anim.SetBool("isWalking", true);
+        anim.SetBool("isWalking", true);
         player_speed = Managers.Data.currentStat[0];//DataManager._instance.items[(int)Define.ItemType.Player_speed].level_1;
     }
 
