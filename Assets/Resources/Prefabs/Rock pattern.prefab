@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 7326054578781364049}
   - component: {fileID: 7326054578781364050}
   - component: {fileID: 6373439139251951028}
+  - component: {fileID: 955326995127108246}
   m_Layer: 0
   m_Name: Rock pattern
   m_TagString: Obstacle
@@ -342,6 +343,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &955326995127108246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7326054578781364051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0075596f3770b4ea7e8c389aa16c6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsUsing: 0
 --- !u!1 &7326054579075382474
 GameObject:
   m_ObjectHideFlags: 0

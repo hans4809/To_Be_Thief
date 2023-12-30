@@ -20,7 +20,7 @@ public class UI_Main : UI_Scene
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
-        GetButton((int)Buttons.ScoreButton).gameObject.AddUIEvent(ScoreClicked);
+        //GetButton((int)Buttons.ScoreButton).gameObject.AddUIEvent(ScoreClicked);
         GetButton((int)Buttons.StartButton).gameObject.AddUIEvent(StartClicked);
     }
     public void StartClicked(PointerEventData eventData)

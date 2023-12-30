@@ -32,4 +32,8 @@ public class CCTVlight : MonoBehaviour
     {
         CCTVDuration = Managers.Data.currentStat[2];
     }
+    public void UpdateStat()
+    {
+        CCTVDuration = Managers.Data.currentStat[2];
+    }
 }

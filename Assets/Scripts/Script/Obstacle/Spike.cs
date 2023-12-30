@@ -38,4 +38,8 @@ public class Spike : MonoBehaviour
     {
         SpikeSpawn = Managers.Data.currentStat[3];
     }
+    public void UpdateStat()
+    {
+        SpikeSpawn = Managers.Data.currentStat[3];
+    }
 }

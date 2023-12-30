@@ -8,10 +8,10 @@ public class ObjectManager : MonoBehaviour
 
     public GameObject[] Prefabs;
 
-    List<GameObject> mapCCTV = new List<GameObject>();
-    List<GameObject> mapRock = new List<GameObject>();
-    List<GameObject> mapSpike = new List<GameObject>();
-    List<GameObject> Break = new List<GameObject>();
+    public List<GameObject> mapCCTV = new List<GameObject>();
+    public List<GameObject> mapRock = new List<GameObject>();
+    public List<GameObject> mapSpike = new List<GameObject>();
+    public List<GameObject> Break = new List<GameObject>();
     void Awake()
     {
         Generate();
@@ -37,6 +37,27 @@ public class ObjectManager : MonoBehaviour
         foreach (GameObject obj in mapRock) { obj.SetActive(false); }
         foreach (GameObject obj in mapSpike) { obj.SetActive(false); }
         foreach (GameObject obj in Break) { obj.SetActive(false); }
+    }
+    public void UpdateStat()
+    {
+        foreach (GameObject obj in mapCCTV) 
+        {
+            if (obj.activeInHierarchy)
+                obj.GetComponent<CCTVlight>().UpdateStat();
+            else{   continue;   }
+        }
+        foreach (GameObject obj in mapRock) 
+        {
+            if (obj.activeInHierarchy)
+                obj.GetComponentInChildren<Rock>().UpdateStat();
+            else { continue; }
+        }
+        foreach (GameObject obj in mapSpike) 
+        {
+            if (obj.activeInHierarchy)
+                obj.GetComponentInChildren<Spike>().UpdateStat();
+            else { continue; }
+        }
     }
     public GameObject MakeObj(int type)
     {

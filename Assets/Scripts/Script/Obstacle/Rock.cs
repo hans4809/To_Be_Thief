@@ -92,4 +92,12 @@ public class Rock : MonoBehaviour
         }
     }
 
+    public void UpdateStat()
+    {
+        Rockspawn_level = Managers.Data.currentStat[4];
+        RockSpeed_level = Managers.Data.currentStat[5];
+        Rocksize_level = Managers.Data.currentStat[6];
+        transform.localScale = new Vector3(Rocksize_level, Rocksize_level * 3.5f, 1);
+        if (isFlip == 1){   RockSpeed_level = -RockSpeed_level; }
+    }
 }

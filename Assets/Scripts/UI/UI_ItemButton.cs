@@ -25,6 +25,7 @@ public class UI_ItemButton : UI_Base
     public override void Init()
     {
         player = FindObjectOfType<PlayerMove>();
+        objectManager = FindObjectOfType<ObjectManager>();
         if (isDebuff)
         {
             itemKey = new Define.ItemKey(itemIndex, Managers.Data.currentLevel[itemIndex] + 1, isDebuff);
@@ -75,6 +76,7 @@ public class UI_ItemButton : UI_Base
         }
         Managers.Game.itemSelected++;
         player.UpdateStat();
+        objectManager.UpdateStat();
         Managers.UI.CloseAllPopUPUI();
         Time.timeScale = 1;
         Managers.Game.currentState = GameManager.GameState.Playing;
