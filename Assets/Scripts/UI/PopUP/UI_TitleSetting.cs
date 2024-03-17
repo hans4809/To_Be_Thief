@@ -15,6 +15,7 @@ public class UI_TitleSetting : UI_Popup
     public enum GameObjects
     {
         CloseButton,
+        CreditButton,
         MasterVolumeImage,
         BGMVolumeImage,
         SFXVolumeImage,
@@ -32,6 +33,7 @@ public class UI_TitleSetting : UI_Popup
         base.Init();
         Bind<GameObject>(typeof(GameObjects));
         Get<GameObject>((int)GameObjects.CloseButton).AddUIEvent(CloseButtonClicked);
+        Get<GameObject>((int)GameObjects.CreditButton).AddUIEvent(CreditButtonClicked);
         masterSlider = Get<GameObject>((int)GameObjects.MasterSlider).GetComponent<Slider>();
         bgmSlider = Get<GameObject>((int)GameObjects.BGMSlider).GetComponent<Slider>();
         sfxSlider = Get<GameObject>((int)GameObjects.SFXSlider).GetComponent<Slider>();
@@ -97,6 +99,10 @@ public class UI_TitleSetting : UI_Popup
         ClosePopUPUI();
     }
     // Update is called once per frame
+    public void CreditButtonClicked(PointerEventData data)
+    {
+        Managers.UI.ShowPopUpUI<UI_Credit>();
+    }
     void Update()
     {
         

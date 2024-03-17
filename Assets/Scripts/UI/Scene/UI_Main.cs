@@ -32,9 +32,5 @@ public class UI_Main : UI_Scene
         Managers.UI.ShowPopUpUI<UI_MaxScore>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
