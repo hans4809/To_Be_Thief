@@ -84,8 +84,7 @@ public class GameManager
 
             if (CanPopUpUI_ItemButton())
             {
-                if (score == 5 || (score % 10 == 0 && score > 5))
-                //if (score == 50 || ((score-50) % 30 == 0))
+                if (score == 50 || ((score-50) % 30 == 0))
                 {
                     if ((score + 1 > itemSelected * 10 && itemSelected != 0) || itemSelected == 0)
                     //if(itemSelected == 0)
