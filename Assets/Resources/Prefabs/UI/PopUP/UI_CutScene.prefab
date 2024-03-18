@@ -265,8 +265,8 @@ MonoBehaviour:
   m_text: "\uC804\uC124\uC758 \uB3C4\uB451\uC774 \uB418\uACE0 \uC2F6\uC5B4 \uD558\uB294
     \uD55C \uC880\uB3C4\uB451\uC774 \uC788\uC5C8\uB2E4. . . "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6f5cdd0858e1b56428c6dc2b4553a862, type: 2}
+  m_sharedMaterial: {fileID: 5442449538907265596, guid: 6f5cdd0858e1b56428c6dc2b4553a862, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -290,8 +290,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150
-  m_fontSizeBase: 150
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
