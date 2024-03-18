@@ -27,6 +27,7 @@ public class GameManager
             Managers.Data.gameData.firstPlay = true;
             Managers.Json.Save(Managers.Data.gameData);
         }
+        Managers.Data.gameData.firstPlay = true;
         currentState = GameState.End;
         Time.timeScale = 0;
         player.GetComponent<Collider2D>().isTrigger = false;
