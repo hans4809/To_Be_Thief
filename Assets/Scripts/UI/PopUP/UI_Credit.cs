@@ -6,6 +6,10 @@ using UnityEngine.EventSystems;
 
 public class UI_Credit : UI_Popup
 {
+    public enum Buttons
+    {
+        ExitButton
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +18,12 @@ public class UI_Credit : UI_Popup
     public override void Init()
     {
         base.Init();
+        Bind<Button>(typeof(Buttons));
+        GetButton((int)Buttons.ExitButton).gameObject.AddUIEvent(ExitButtonClicked);
 
     }
-    private void Update()
+    void ExitButtonClicked(PointerEventData eventData)
     {
-        
+        ClosePopUPUI();
     }
 }
