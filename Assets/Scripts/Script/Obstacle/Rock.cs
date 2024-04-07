@@ -16,6 +16,8 @@ public class Rock : MonoBehaviour
     int isReturn;
     int isFlip;
 
+    SpriteRenderer rend;
+
     Vector3 rotation;
     private void Awake()
     {
@@ -23,6 +25,7 @@ public class Rock : MonoBehaviour
     }
     void Start()
     {
+        rend = GetComponent<SpriteRenderer>();
         Rocksize_level = Managers.Data.currentStat[6]; //  값의 변화를 조절 , Sprite에 이미지 적용으로 값 조절
         RockSpeed_level = Managers.Data.currentStat[5];
         Rockspawn_level = Managers.Data.currentStat[4];
@@ -33,8 +36,10 @@ public class Rock : MonoBehaviour
 
         if (isFlip == 1) // isFlip 1이면 오->왼
         {
+            rend.flipX = true;
             RockSpeed_level = -RockSpeed_level;
-            transform.position = new Vector3(-originx, transform.position.y, 0);
+            originx = -originx;
+            transform.position = new Vector3(originx, transform.position.y, 0);
         }
     }
     void Update()
@@ -57,10 +62,12 @@ public class Rock : MonoBehaviour
     {
         if (collision.gameObject.name == "RReturn" && (isReturn == 1 && isFlip == 0)) //왼->오->왼 왕복
         {
+            rend.flipX = true;
             RockSpeed_level = -RockSpeed_level;
         }
         if (collision.gameObject.name == "LReturn" && (isReturn == 1 && isFlip == 1)) //오->왼->오 왕복
         {
+            rend.flipX = false;
             RockSpeed_level = -RockSpeed_level;
         }
         if (collision.gameObject.tag == "Border")
@@ -68,9 +75,11 @@ public class Rock : MonoBehaviour
             transform.position = new Vector3(originx, transform.position.y, 0); 
             timer = 0; //화면 밖으로 나가면 timer 초기화
             rotationTime = 0;
-            if(isReturn == 1)
+            if(isReturn == 1) //1회 왕복 후 화면 밖으로 나갔을 때
             {
                 RockSpeed_level = -RockSpeed_level;
+                if (isFlip == 1) rend.flipX = true;
+                else rend.flipX = false;
             }
         }
         
