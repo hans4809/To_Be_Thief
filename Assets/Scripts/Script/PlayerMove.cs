@@ -34,6 +34,7 @@ public class PlayerMove : MonoBehaviour
     public void Init()
     {
         Playersize_level = Managers.Data.currentStat[1];
+        transform.localScale = new Vector3(Playersize_level, Playersize_level, 1);
         player_speed = Managers.Data.currentStat[0];
         //transform.localScale = new Vector3(Playersize_level, Playersize_level, 1f); // 크기 설정
         /* 

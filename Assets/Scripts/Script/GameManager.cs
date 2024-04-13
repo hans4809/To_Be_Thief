@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager
 {
     public int score = 0;
+    int beforeScore = 0;
     public PlayerMove player;
     public int itemSelected = 0;
     bool Stage_in2 = false;
@@ -85,7 +86,8 @@ public class GameManager
 
             if (CanPopUpUI_ItemButton())
             {
-                if (score == 50 || ((score-50) % 30 == 0))
+                //score가 int형이라 한 칸 이동하기 전까지 아이템 선택창이 여러번 뜨는 오류가 있어서 beforeScore 변수를 추가했습니다.
+                if ((score == 15 || (score > 15 && ((score-5) % 10 == 0))) && beforeScore != score)
                 {
                     if ((score + 1 > itemSelected * 10 && itemSelected != 0) || itemSelected == 0)
                     //if(itemSelected == 0)
@@ -94,6 +96,7 @@ public class GameManager
                         Managers.UI.ShowPopUpUI<UI_SelectItem>();
                         Time.timeScale = 0;
                         currentState = GameState.Pause;
+                        beforeScore = score;
                     }
                     //else
                     //{
