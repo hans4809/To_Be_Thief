@@ -43,11 +43,12 @@ public class GameManager
         ObjectManager objectManager = GameObject.FindObjectOfType<ObjectManager>();
         backGroundManager.Clear();
         objectManager.Clear();
-        player.Init();
+        //player.Init();
         player.MakeStartPattern();
         Managers.UI.CloseAllPopUPUI();
         player.GetComponent<Collider2D>().isTrigger = true;
         score = 0;
+        beforeScore = 0;
         if (player != null) { player.transform.localPosition = new Vector3(0, 0, 0); }
         for (int i = 0; i < 7; i++)
         {
@@ -55,6 +56,7 @@ public class GameManager
             Managers.Data.currentStat[i] = Managers.GoogleSheet.itemDict[new Define.ItemKey(i, 1, true)].effect;
         }
         currentState = GameState.Playing;
+        player.Init(); // currentLevel, Stat 업데이트 하고 init해야 재시작 할 때 초기화가 돼서 위치 옮겼습니다.
         Time.timeScale = 1;
         itemSelected = 0;
         Managers.Sound.Play("Sounds/BGM/InGameBGM", Define.Sound.BGM);

@@ -34,8 +34,8 @@ public class PlayerMove : MonoBehaviour
     public void Init()
     {
         Playersize_level = Managers.Data.currentStat[1];
-        transform.localScale = new Vector3(Playersize_level, Playersize_level, 1);
         player_speed = Managers.Data.currentStat[0];
+        UpdateStat(); //재시작 하고 나서 playersize랑 카메라가 초기화가 안돼서 추가했습니다.
         //transform.localScale = new Vector3(Playersize_level, Playersize_level, 1f); // 크기 설정
         /* 
          * 원래 유정님이 하신 것도 잘하셨습니다. 그런데 그냥 플레이어에 마우스 입력을 받아버리면
@@ -253,7 +253,7 @@ public class PlayerMove : MonoBehaviour
                     camera3.SetActive(false);
                 }
                 break;
-            case 1:
+            case 0.9f:
                 if (mainCamera.activeInHierarchy)
                 {
                     mainCamera.SetActive(false);
@@ -267,7 +267,7 @@ public class PlayerMove : MonoBehaviour
                     camera3.SetActive(false);
                 }
                 break;
-            case 1.25f:
+            case 1.05f:
                 if (mainCamera.activeInHierarchy)
                 {
                     mainCamera.SetActive(false);
