@@ -237,52 +237,52 @@ public class PlayerMove : MonoBehaviour
         player_speed = Managers.Data.currentStat[0];
         Playersize_level = Managers.Data.currentStat[1];
         transform.localScale = new Vector3(Playersize_level, Playersize_level, 1);
-        switch (Playersize_level)
-        {
-            case 0.75f:
-                if (!mainCamera.activeInHierarchy)
-                {
-                    mainCamera.SetActive(true);
-                }
-                if (camera2.activeInHierarchy)
-                {
-                    camera2.SetActive(false);
-                }
-                if (camera3.activeInHierarchy)
-                {
-                    camera3.SetActive(false);
-                }
-                break;
-            case 0.9f:
-                if (mainCamera.activeInHierarchy)
-                {
-                    mainCamera.SetActive(false);
-                }
-                if (!camera2.activeInHierarchy)
-                {
-                    camera2.SetActive(true);
-                }
-                if (camera3.activeInHierarchy)
-                {
-                    camera3.SetActive(false);
-                }
-                break;
-            case 1.05f:
-                if (mainCamera.activeInHierarchy)
-                {
-                    mainCamera.SetActive(false);
-                }
-                if (camera2.activeInHierarchy)
-                {
-                    camera2.SetActive(false);
-                }
-                if (!camera3.activeInHierarchy)
-                {
-                    camera3.SetActive(true);
-                }
-                break;
+        //switch (Playersize_level)
+        //{
+        //    case 0.75f:
+        //        if (!mainCamera.activeInHierarchy)
+        //        {
+        //            mainCamera.SetActive(true);
+        //        }
+        //        if (camera2.activeInHierarchy)
+        //        {
+        //            camera2.SetActive(false);
+        //        }
+        //        if (camera3.activeInHierarchy)
+        //        {
+        //            camera3.SetActive(false);
+        //        }
+        //        break;
+        //    case 0.9f:
+        //        if (mainCamera.activeInHierarchy)
+        //        {
+        //            mainCamera.SetActive(false);
+        //        }
+        //        if (!camera2.activeInHierarchy)
+        //        {
+        //            camera2.SetActive(true);
+        //        }
+        //        if (camera3.activeInHierarchy)
+        //        {
+        //            camera3.SetActive(false);
+        //        }
+        //        break;
+        //    case 1.05f:
+        //        if (mainCamera.activeInHierarchy)
+        //        {
+        //            mainCamera.SetActive(false);
+        //        }
+        //        if (camera2.activeInHierarchy)
+        //        {
+        //            camera2.SetActive(false);
+        //        }
+        //        if (!camera3.activeInHierarchy)
+        //        {
+        //            camera3.SetActive(true);
+        //        }
+        //        break;
 
-        }
+        //}
     }
     public void MakeStartPattern()
     {

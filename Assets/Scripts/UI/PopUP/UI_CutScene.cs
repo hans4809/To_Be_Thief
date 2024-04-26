@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Collections.LowLevel.Unsafe;
 
 public class UI_CutScene : UI_Popup
 {
@@ -13,6 +14,7 @@ public class UI_CutScene : UI_Popup
     // Start is called before the first frame update
     void Start()
     {
+        Init();
         text = targetText.text.ToString(); // 적힌 텍스트를 받아온다
         targetText.text = " "; // 그 후 초기화한다.
         StartCoroutine(textPrint(delay)); //텍스트 프린트 시작
@@ -20,6 +22,7 @@ public class UI_CutScene : UI_Popup
     public override void Init() // CutScene 출력과정에서 우선 안썼습니다 2024-03-18
     {
         base.Init();
+        SetResolution();
         StartCoroutine(CutScene());
     }
     IEnumerator CutScene()
