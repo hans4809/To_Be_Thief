@@ -25,10 +25,6 @@ public class Define
             this.level = _level;
             this.isDebuff = _isDebuff;
         }
-        public override int GetHashCode()
-        {
-            return itemIndex.GetHashCode() + level.GetHashCode() + isDebuff.GetHashCode();
-        }
     }
     public class ItemData
     {

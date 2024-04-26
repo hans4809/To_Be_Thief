@@ -4,7 +4,20 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Networking;
+using static Define;
 
+public class ItemKeyComparer : IEqualityComparer<ItemKey>
+{
+    bool IEqualityComparer<ItemKey>.Equals(ItemKey x, ItemKey y)
+    {
+        return x.itemIndex == y.itemIndex && x.level == y.level && x.isDebuff == y.isDebuff;
+    }
+
+    public int GetHashCode(ItemKey obj)
+    {
+        return obj.itemIndex.GetHashCode() ^ obj.level.GetHashCode() ^ obj.isDebuff.GetHashCode();
+    }
+}
 public class GoogleSheetManager
 {
     // 읽어올 구글스프레드시트 주소
@@ -22,20 +35,20 @@ public class GoogleSheetManager
         Value -> 해당 스프레드 시트에서 읽어온 데이터들을 쭉 나열
     */
     protected Dictionary<Type, string> sheetDatas = new Dictionary<Type, string>();
-    public List<Define.ItemTable> itemList = new List<Define.ItemTable>();
-    public List<Define.ScoreData> scoreList = new List<Define.ScoreData>();
+    public List<ItemTable> itemList = new List<ItemTable>();
+    public List<ScoreData> scoreList = new List<ScoreData>();
     // 아이템 데이터의 기본키가 ItemIndex, level, isDebuff 3개가 필요해서 Struct로 묶어서 KEY값 설정
-    public Dictionary<Define.ItemKey, Define.ItemData> itemDict = new Dictionary<Define.ItemKey, Define.ItemData>();
+    public Dictionary<ItemKey, ItemData> itemDict = new Dictionary<ItemKey, ItemData>(new ItemKeyComparer());
     public virtual void Init() 
     {
         // 처음에 각 데이터를 읽어올 주소를 일단 SheetDatas에 넣음
-        if(!sheetDatas.ContainsKey(typeof(Define.ItemTable)))
+        if(!sheetDatas.ContainsKey(typeof(ItemTable)))
         {
-            sheetDatas.Add(typeof(Define.ItemTable), GetTSVAddress(ADDRESS, ItmeRANGE));
+            sheetDatas.Add(typeof(ItemTable), GetTSVAddress(ADDRESS, ItmeRANGE));
         }
-        if (!sheetDatas.ContainsKey(typeof(Define.ScoreData)))
+        if (!sheetDatas.ContainsKey(typeof(ScoreData)))
         {
-            sheetDatas.Add(typeof(Define.ScoreData), GetTSVAddress(ADDRESS, GameDataRANGE, SHEET_ID));
+            sheetDatas.Add(typeof(ScoreData), GetTSVAddress(ADDRESS, GameDataRANGE, SHEET_ID));
         }
     }
     /// <summary>
@@ -83,13 +96,13 @@ public class GoogleSheetManager
             sheetDatas[type] = www.downloadHandler.text;
 
             // 데이터 타입에 맞게 파싱해서 리스트에 저장
-            if(type == typeof(Define.ItemTable))
+            if(type == typeof(ItemTable))
             {
-                itemList = GetDatas<Define.ItemTable>(sheetDatas[type]);
+                itemList = GetDatas<ItemTable>(sheetDatas[type]);
             }
-            if(type == typeof(Define.ScoreData))
+            if(type == typeof(ScoreData))
             {
-                scoreList = GetDatas<Define.ScoreData>(sheetDatas[type]);
+                scoreList = GetDatas<ScoreData>(sheetDatas[type]);
             }
         }
     }
