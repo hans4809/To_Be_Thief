@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class JsonManager
 {
-    public void Save<T>(T data, string name = null)
+    public static void Save<T>(T data, string name = null)
     {
         //안드로이드에서의 저장 위치를 다르게 해주어야 한다
         //Application.dataPath를 이용하면 어디로 가는지는 구글링 해보길 바란다
@@ -36,7 +36,7 @@ public class JsonManager
         fileStream.Write(bytes, 0, bytes.Length);
         fileStream.Close();
     }
-    public T Load<T>(string name = null) where T : new()
+    public static T Load<T>(string name = null) where T : new()
     {
         T data;
         if (string.IsNullOrEmpty(name))

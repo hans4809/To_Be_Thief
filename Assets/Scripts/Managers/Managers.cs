@@ -15,7 +15,6 @@ public class Managers : MonoBehaviour
     SoundManager _sound = new SoundManager();
     PoolManager _pool = new PoolManager();
     GameManager _game = new GameManager();
-    JsonManager _json = new JsonManager();
     GoogleSheetManager _googleSheet = new GoogleSheetManager();
     BackGroundManager _backGround = new BackGroundManager();
 
@@ -29,7 +28,6 @@ public class Managers : MonoBehaviour
     public static SoundManager Sound { get { return Instance._sound; } }
     public static PoolManager Pool { get { return Instance._pool; } }
     public static GoogleSheetManager GoogleSheet {  get { return Instance._googleSheet; } }
-    public static JsonManager Json { get { return Instance._json; } }
 
     public static BackGroundManager BackGround {  get { return Instance._backGround; } }
 
@@ -41,8 +39,8 @@ public class Managers : MonoBehaviour
     public IEnumerator WaitForDataLoaing()
     {
         Coroutine cor1 = StartCoroutine(_googleSheet.LoadData());
-        _data.patternDatas = _json.Load<Define.PatternDatas>();
-        _data.gameData = _json.Load<Define.WholeGameData>();
+        _data.patternDatas = JsonManager.Load<Define.PatternDatas>();
+        _data.gameData = JsonManager.Load<Define.WholeGameData>();
         yield return cor1;
         foreach (var temp in _googleSheet.itemList)
         {

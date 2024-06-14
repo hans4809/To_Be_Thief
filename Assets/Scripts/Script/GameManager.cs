@@ -26,7 +26,7 @@ public class GameManager
         {
             Managers.Data.gameData.maxScore = score;
             Managers.Data.gameData.firstPlay = true;
-            Managers.Json.Save(Managers.Data.gameData);
+            JsonManager.Save(Managers.Data.gameData);
         }
         Managers.Data.gameData.firstPlay = true;
         currentState = GameState.End;
